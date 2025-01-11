@@ -19,5 +19,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", include("events.urls")),
+    path('', include('events.urls')),  # Ensure this line includes the events app URLs
 ]
