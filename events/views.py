@@ -24,10 +24,12 @@ def event_list(request):
     paginator = Paginator(events, 5)  # 5 events per page
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    return render(request, 'events/index.html', {'page_obj': page_obj, 'post_list': page_obj})
+    return render(request, 'events/event_list.html', {'page_obj': page_obj, 'post_list': page_obj})
 
 def home(request):
-    return render(request, 'events/index.html')
+    return render(request, 'events/event_list.html')
 
 def about(request):
     return render(request, 'events/about.html')
+
+
