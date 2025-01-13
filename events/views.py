@@ -1,6 +1,7 @@
 # views.py
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 from .forms import EventForm
 from .models import Event
 
@@ -19,5 +20,14 @@ def create_event(request):
 
 @login_required
 def event_list(request):
-    events = Event.objects.all()
-    return render(request, 'events/event_list.html', {'events': events})
+    events = Event.objects.filter(date__gte='2024-01-01').order_by('date')
+    paginator = Paginator(events, 5)  # 5 events per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'events/index.html', {'page_obj': page_obj, 'post_list': page_obj})
+
+def home(request):
+    return render(request, 'events/index.html')
+
+def about(request):
+    return render(request, 'events/about.html')
