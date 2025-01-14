@@ -37,36 +37,12 @@
                         <a class="nav-link" href="{% url 'event_list' %}">Events</a>
                     </li>
                     {% if user.is_authenticated %}
-                    {% if user.role == 'attendee' %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">RSVP</a>
-                    </li>
-                    {% elif user.role == 'organizer' %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Create Event</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">RSVP Management</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Dashboard</a>
-                    </li>
-                    {% elif user.role == 'admin' %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">User Management</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Role Management</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Dashboard</a>
-                    </li>
-                    {% endif %}
                     <li class="nav-item">
                         <a class="nav-link" href="#">About Us</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>
+                    </li>
                     </li>
                     {% else %}
                     <li class="nav-item">
@@ -88,6 +64,7 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="profileDropdown">
                         <li><a class="dropdown-item" href="#">View Profile</a></li>
+                        <li><a class="dropdown-item" href="{% url 'create_event'%}">Create Event</a></li>
                         <li><a class="dropdown-item" href="#">Settings</a></li>
                         <li><a class="dropdown-item" href="{% url 'account_logout'%}">Logout</a></li>
                     </ul>

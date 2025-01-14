@@ -8,7 +8,7 @@ class PostAdmin(SummernoteModelAdmin):
     search_fields = ['title']
     list_filter = ('status',)
     prepopulated_fields = {'slug': ('title',)}
-    summernote_fields = ('content',)
+    summernote_fields = ('description',)
 
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
