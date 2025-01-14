@@ -8,7 +8,7 @@ Event Details
 {% block content %}
 <div class="container mt-5">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-8">
             {% if event.image %}
                 <div class="mb-3">
                     <img src="{{ event.image.url }}" class="img-fluid" alt="{{ event.title }}">
@@ -23,9 +23,18 @@ Event Details
                     </video>
                 </div>
             {% endif %}
-        </div>
-        <div class="col-md-8">
-            <h2>{{ event.title }}</h2>
+            <div class="mt-3">
+                <a href="{% url 'like_event' event.pk %}" class="btn btn-primary" id="like-button" data-event-id="{{ event.pk }}">
+                    <i class="fas fa-thumbs-up"></i> Like (<span id="like-count">{{ event.likes.count }}</span>)
+                </a>
+                <a href="#" class="btn btn-secondary">
+                    <i class="fas fa-share"></i> Share
+                </a>
+                <button class="btn btn-info" id="comment-toggle">
+                    <i class="fas fa-comment"></i> Comment (<span id="comment-count">{{ event.comments.count }}</span>)
+                </button>
+            </div>
+            <h2 class="mt-5">{{ event.title }}</h2>
             <p><strong>Description:</strong> {{ event.description }}</p>
             <p><strong>Date:</strong> {{ event.date }}</p>
             <p><strong>Time:</strong> {{ event.time }}</p>
@@ -39,6 +48,93 @@ Event Details
                 </div>
             {% endif %}
         </div>
+        <div class="col-md-4">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <h3>Comments (<span id="comment-count">{{ event.comments.count }}</span>)</h3>
+                    <form method="POST" id="comment-form" style="display: none;">
+                        {% csrf_token %}
+                        {{ comment_form.as_p }}
+                        <button type="submit" class="btn btn-primary">Add Comment</button>
+                    </form>
+                    <ul class="list-group mt-3" id="comment-list">
+                        {% for comment in comments %}
+                            <li class="list-group-item" id="comment-{{ comment.pk }}">
+                                <p>{{ comment.content }}</p>
+                                <small>By {{ comment.user }} on {{ comment.created_at }}</small>
+                                {% if comment.user == user %}
+                                    <div class="mt-2">
+                                        <a href="{% url 'update_comment' comment.pk %}" class="btn btn-warning btn-sm">Edit</a>
+                                        <a href="{% url 'delete_comment' comment.pk %}" class="btn btn-danger btn-sm">Delete</a>
+                                    </div>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+<script>
+    document.getElementById('like-button').addEventListener('click', function(event) {
+        event.preventDefault();
+        const eventId = this.getAttribute('data-event-id');
+        fetch(`/events/${eventId}/like/`, {
+            method: 'GET',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRFToken': '{{ csrf_token }}'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('like-count').innerText = data.like_count;
+            this.innerHTML = `<i class="fas fa-thumbs-up"></i> ${data.is_liked ? 'Unlike' : 'Like'} (${data.like_count})`;
+        });
+    });
+
+    document.getElementById('comment-toggle').addEventListener('click', function() {
+        const commentForm = document.getElementById('comment-form');
+        if (commentForm.style.display === 'none') {
+            commentForm.style.display = 'block';
+        } else {
+            commentForm.style.display = 'none';
+        }
+    });
+
+    document.getElementById('comment-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const formData = new FormData(this);
+        fetch(this.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRFToken': '{{ csrf_token }}'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const commentList = document.getElementById('comment-list');
+                const newComment = document.createElement('li');
+                newComment.classList.add('list-group-item');
+                newComment.id = `comment-${data.comment.pk}`;
+                newComment.innerHTML = `
+                    <p>${data.comment.content}</p>
+                    <small>By ${data.comment.user} on ${data.comment.created_at}</small>
+                    <div class="mt-2">
+                        <a href="/comments/${data.comment.pk}/update/" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="/comments/${data.comment.pk}/delete/" class="btn btn-danger btn-sm">Delete</a>
+                    </div>
+                `;
+                commentList.prepend(newComment);
+                document.getElementById('comment-count').innerText = data.comment_count;
+                this.reset();
+            }
+        });
+    });
+</script>
 {% endblock %}

@@ -1,6 +1,7 @@
 # forms.py
 from django import forms
 from .models import Event
+from .models import Comment
 
 class EventForm(forms.ModelForm):
     class Meta:
@@ -10,3 +11,8 @@ class EventForm(forms.ModelForm):
             'date': forms.DateInput(attrs={'type': 'date'}),
             'time': forms.TimeInput(attrs={'type': 'time'})
         }
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['content']
