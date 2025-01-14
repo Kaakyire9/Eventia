@@ -8,13 +8,20 @@ Create Event
 {% block content %}
 <div class="container mt-5">
     <h2>Create Event</h2>
-    <form method="POST" class="needs-validation" novalidate>
+    <form method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
         {% csrf_token %}
         <div class="mb-3">
             {{ form.title.label_tag }}
             {{ form.title }}
             <div class="invalid-feedback">
                 Please provide a valid title.
+            </div>
+        </div>
+        <div class="mb-3">
+            {{ form.description.label_tag }}
+            {{ form.description }}
+            <div class="invalid-feedback">
+                Please provide a valid description.
             </div>
         </div>
         <div class="mb-3">
@@ -39,10 +46,24 @@ Create Event
             </div>
         </div>
         <div class="mb-3">
-            {{ form.description.label_tag }}
-            {{ form.description }}
+            {{ form.capacity.label_tag }}
+            {{ form.capacity }}
             <div class="invalid-feedback">
-                Please provide a valid description.
+                Please provide a valid capacity.
+            </div>
+        </div>
+        <div class="mb-3">
+            {{ form.image.label_tag }}
+            {{ form.image }}
+            <div class="invalid-feedback">
+                Please provide a valid image.
+            </div>
+        </div>
+        <div class="mb-3">
+            {{ form.video.label_tag }}
+            {{ form.video }}
+            <div class="invalid-feedback">
+                Please provide a valid video.
             </div>
         </div>
         <button type="submit" class="btn btn-primary">Create Event</button>

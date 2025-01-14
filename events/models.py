@@ -11,6 +11,8 @@ class Event(models.Model):
     capacity = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     organizer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='event_images/', blank=True, null=True)
+    video = models.FileField(upload_to='event_videos/', blank=True, null=True)
 
     def __str__(self):
         return self.title

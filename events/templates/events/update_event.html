@@ -1,0 +1,17 @@
+<!-- filepath: /workspace/Eventia/events/templates/events/update_event.html -->
+{% extends "base.html" %}
+
+{% block title %}
+Update Event
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Update Event</h2>
+    <form method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Update Event</button>
+    </form>
+</div>
+{% endblock %}

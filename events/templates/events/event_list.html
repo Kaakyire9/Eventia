@@ -1,60 +1,49 @@
 <!-- filepath: /workspace/Eventia/events/templates/events/index.html-->
 {% extends "base.html" %}
 
+{% block title %}
+Event List
+{% endblock %}
+
 {% block content %}
 
 <!-- index.html content starts here -->
-<div class="container-fluid">
-    <div class="row">
-
-        <!-- Blog Entries Column -->
-        <div class="col-12 mt-3 left">
-            <div class="row">
-                {% for event in page_obj %}
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="image-container">
-                                <div class="image-flash">
-                                    <p class="author">Organizer: {{ event.organizer }}</p>
-                                </div>
-                            </div>
-                            <a href="#" class="post-link">
-                                <h2 class="card-title">{{ event.title }}</h2>
-                            </a>
-
-                            <hr />
-                            <p class="card-text text-muted h6">{{ event.date }}</p>
-                            <p class="card-text text-muted h6">{{ event.location }}</p>
-                        </div>
-                    </div>
-                </div>
-                {% if forloop.counter|divisibleby:3 %}
-            </div>
-            <div class="row">
+<div class="container mt-5">
+    <h2>Event List</h2>
+    <ul class="list-group">
+        {% for event in page_obj %}
+            <li class="list-group-item">
+                <a href="{% url 'event_detail' event.pk %}">{{ event.title }}</a>
+                <p>{{ event.date }} - {{ event.time }}</p>
+                <p>{{ event.location }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="mt-3">
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
                 {% endif %}
+                {% for num in page_obj.paginator.page_range %}
+                    <li class="page-item {% if page_obj.number == num %}active{% endif %}">
+                        <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                    </li>
                 {% endfor %}
-
-            </div>
-        </div>
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
     </div>
-    {% if is_paginated %}
-    <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
-            {% if page_obj.has_previous %}
-            <li><a href="?page=1" class="page-link">First</a></li>
-            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">Previous</a></li>
-            {% endif %}
-
-            <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
-
-            {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link">Next</a></li>
-            <li><a href="?page={{ page_obj.paginator.num_pages }}" class="page-link">Last</a></li>
-            {% endif %}
-        </ul>
-    </nav>
-    {% endif %}
 </div>
 
 <!-- index.html content ends here -->

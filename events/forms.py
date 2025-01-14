@@ -5,7 +5,7 @@ from .models import Event
 class EventForm(forms.ModelForm):
     class Meta:
         model = Event
-        fields = ['title', 'description', 'date', 'time', 'location', 'capacity']
+        fields = ['title', 'description', 'date', 'time', 'location', 'capacity', 'image', 'video']
         widgets = {
             'date': forms.DateInput(attrs={'type': 'date'}),
             'time': forms.TimeInput(attrs={'type': 'time'})

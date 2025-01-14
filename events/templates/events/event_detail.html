@@ -1,0 +1,44 @@
+<!-- filepath: /workspace/Eventia/events/templates/events/event_detail.html -->
+{% extends "base.html" %}
+
+{% block title %}
+Event Details
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            {% if event.image %}
+                <div class="mb-3">
+                    <img src="{{ event.image.url }}" class="img-fluid" alt="{{ event.title }}">
+                </div>
+            {% endif %}
+            
+            {% if event.video %}
+                <div class="mb-3">
+                    <video controls class="img-fluid">
+                        <source src="{{ event.video.url }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            {% endif %}
+        </div>
+        <div class="col-md-8">
+            <h2>{{ event.title }}</h2>
+            <p><strong>Description:</strong> {{ event.description }}</p>
+            <p><strong>Date:</strong> {{ event.date }}</p>
+            <p><strong>Time:</strong> {{ event.time }}</p>
+            <p><strong>Location:</strong> {{ event.location }}</p>
+            <p><strong>Organizer:</strong> {{ event.organizer }}</p>
+            
+            {% if user == event.organizer %}
+                <div class="mt-3">
+                    <a href="{% url 'update_event' event.pk %}" class="btn btn-warning">Update</a>
+                    <a href="{% url 'delete_event' event.pk %}" class="btn btn-danger">Delete</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
