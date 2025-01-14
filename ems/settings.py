@@ -54,7 +54,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'about',
     'events',
-    'users',
     'rsvp',
 ]
 
