@@ -5,7 +5,7 @@ from django.http import HttpResponseForbidden, JsonResponse
 from django.core.paginator import Paginator
 from django.utils import timezone
 from .forms import EventForm, CommentForm
-from .models import Event, Like, Comment
+from .models import Event, Like, Comment, Attendee
 
 @login_required
 def create_event(request):
@@ -123,5 +123,24 @@ def home(request):
 
 def about(request):
     return render(request, 'events/about.html')
+
+@login_required
+def request_attendance(request, event_id):
+    event = get_object_or_404(Event, id=event_id)
+    attendee, created = Attendee.objects.get_or_create(event=event, user=request.user)
+    if created:
+        # New request created
+        attendee.requested_at = timezone.now()
+        attendee.save()
+    return redirect('event_detail', event_id=event.id)
+
+@login_required
+def approve_attendance(request, attendee_id):
+    attendee = get_object_or_404(Attendee, id=attendee_id)
+    if request.user == attendee.event.organizer:  # Assuming Event has an organizer field
+        attendee.approved = True
+        attendee.approved_at = timezone.now()
+        attendee.save()
+    return redirect('event_detail', event_id=attendee.event.id)
 
 

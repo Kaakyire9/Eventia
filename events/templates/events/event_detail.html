@@ -1,5 +1,6 @@
 <!-- filepath: /workspace/Eventia/events/templates/events/event_detail.html -->
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
 Event Details
@@ -75,6 +76,36 @@ Event Details
             </div>
         </div>
     </div>
+</div>
+
+<div class="container">
+    {% if user.is_authenticated %}
+        {% if user != event.organizer %}
+            <form action="{% url 'request_attendance' event.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Request to Attend</button>
+            </form>
+        {% endif %}
+    {% endif %}
+    <!-- Display attendees and approval buttons for the organizer -->
+    {% if user == event.organizer %}
+        <h3>Attendance Requests</h3>
+        <ul>
+            {% for attendee in event.attendees.all %}
+                <li>
+                    {{ attendee.user.username }}
+                    {% if not attendee.approved %}
+                        <form action="{% url 'approve_attendance' attendee.id %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-success">Approve</button>
+                        </form>
+                    {% else %}
+                        <span class="text-success">Approved</span>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 </div>
 
 <script>
