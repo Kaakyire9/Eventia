@@ -1,0 +1,210 @@
+<!-- filepath: /workspace/Eventia/templates/home.html -->
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+<!-- Header Section -->
+<header>
+    <div class="container hero-section">
+        <div class="row">
+            <div class="col-md-6 d-flex align-items-center justify-content-center">
+                <div class="text-center">
+                    <h1 class="display-4">Transform your event dreams into unforgettable experiences</h1>
+                    <a href="{% url 'create_event' %}" class="btn btn-primary btn-lg mt-3">Create Event</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <!-- Placeholder for the powerful image -->
+                <img src="{% static 'images/event_hero.jpg' %}" class="img-fluid" alt="Powerful Image">
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Section -->
+<main>
+    <div class="container groupings-container">
+        <div class="row text-center">
+            <div class="col-md-2">
+                <div class="circular-icon" data-category="subject">
+                    <i class="fas fa-briefcase"></i>
+                    <p>By Subject</p>
+                    <ul class="list-group event-items" id="subject-items">
+                        <!-- Event items will be dynamically inserted here -->
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="circular-icon" data-category="type">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <p>By Event Type</p>
+                    <ul class="list-group event-items" id="type-items">
+                        <!-- Event items will be dynamically inserted here -->
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="circular-icon" data-category="audience">
+                    <i class="fas fa-users"></i>
+                    <p>By Audience</p>
+                    <ul class="list-group event-items" id="audience-items">
+                        <!-- Event items will be dynamically inserted here -->
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="circular-icon" data-category="purpose">
+                    <i class="fas fa-bullseye"></i>
+                    <p>By Purpose</p>
+                    <ul class="list-group event-items" id="purpose-items">
+                        <!-- Event items will be dynamically inserted here -->
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="circular-icon" data-category="tags">
+                    <i class="fas fa-tags"></i>
+                    <p>By Tags</p>
+                    <ul class="list-group event-items" id="tags-items">
+                        <!-- Event items will be dynamically inserted here -->
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="circular-icon" data-category="experience">
+                    <i class="fas fa-vr-cardboard"></i>
+                    <p>By Experience Type</p>
+                    <ul class="list-group event-items" id="experience-items">
+                        <!-- Event items will be dynamically inserted here -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upcoming Events Section -->
+    <div class="container mt-5">
+        <h2>Upcoming Events</h2>
+        <div class="upcoming-events">
+            {% for event in upcoming_events|slice:":6" %}
+                <div class="event-card">
+                    {% if event.image %}
+                        <img src="{{ event.image.url }}" class="card-img-top" alt="{{ event.title }}">
+                    {% elif event.video %}
+                        <video controls class="card-img-top">
+                            <source src="{{ event.video.url }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ event.title }}</h5>
+                        <p class="card-text">{{ event.description|truncatewords:20 }}</p>
+                        <p class="card-text"><small class="text-muted">{{ event.date }} - {{ event.time }}</small></p>
+                        <p class="card-text">
+                            <i class="fas fa-thumbs-up"></i> {{ event.likes.count }} Likes
+                            <i class="fas fa-comment"></i> {{ event.comments.count }} Comments
+                        </p>
+                        <p class="card-text"><strong>{{ event.days_left }} days left</strong></p>
+                        <a href="{% url 'event_detail' event.pk %}" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+
+<!-- Footer Section -->
+<footer>
+    <!-- Add footer content here if needed -->
+</footer>
+
+<script>
+    document.querySelectorAll('.circular-icon').forEach(icon => {
+        icon.addEventListener('mouseenter', function() {
+            const category = this.getAttribute('data-category');
+            const eventItems = document.getElementById(`${category}-items`);
+
+            // Clear previous event items
+            eventItems.innerHTML = '';
+
+            // Fetch and display events based on the category
+            const events = getEventsByCategory(category);
+            events.forEach(event => {
+                const listItem = document.createElement('li');
+                listItem.classList.add('list-group-item');
+                listItem.innerHTML = `<a href="/events/${event.id}/">${event.title.replace(' Event', '')}</a>`;
+                eventItems.appendChild(listItem);
+            });
+
+            // Show the event items
+            eventItems.style.display = 'block';
+        });
+
+        icon.addEventListener('mouseleave', function() {
+            const category = this.getAttribute('data-category');
+            const eventItems = document.getElementById(`${category}-items`);
+
+            // Hide the event items
+            eventItems.style.display = 'none';
+        });
+    });
+
+    // Placeholder function to get events by category
+    function getEventsByCategory(category) {
+        // Replace this with actual logic to fetch events from the server
+        const sampleEvents = {
+            subject: [
+                { id: 1, title: '<i class="fa-solid fa-business-time"></i>Business Event' },
+                { id: 2, title: '<i class="fa-solid fa-flask-vial"></i>Science Event' },
+                { id: 3, title: '<i class="fa-brands fa-envira"></i>Environment Event' },
+                { id: 4, title: '<i class="fa-solid fa-palette"></i>Arts Event' },
+                { id: 5, title: '<i class="fa-solid fa-microchip"></i>Technology Event' },
+                { id: 6, title: '<i class="fa-solid fa-user-graduate"></i>Education Event' },
+            ],
+            type: [
+                { id: 7, title: '<i class="fa-solid fa-chart-simple"></i>Performance Event' },
+                { id: 8, title: '<i class="fa-solid fa-hands-praying"></i>Workshop Event' },
+                { id: 9, title: '<i class="fa-solid fa-users-gear"></i>Seminar Event' },
+                { id: 10, title: '<i class="fa-solid fa-people-roof"></i>Conference Event' },
+                { id: 11, title: '<i class="fa-solid fa-network-wired"></i>Networking Event' },
+                { id: 12, title: 'Social Gathering Event' },
+            ],
+            audience: [
+                { id: 13, title: 'Student Event' },
+                { id: 14, title: 'Professional Event' },
+                { id: 15, title: 'Entrepreneur Event' },
+                { id: 16, title: 'Academic Researcher Event' },
+                { id: 17, title: 'Community Member Event' },
+                { id: 18, title: 'Industry Specialist Event' },
+            ],
+            purpose: [
+                { id: 19, title: 'Educational Event' },
+                { id: 20, title: 'Networking Event' },
+                { id: 21, title: 'Fundraising Event' },
+                { id: 22, title: 'Professional Development Event' },
+                { id: 23, title: 'Entertainment Event' },
+                { id: 24, title: 'Community Engagement Event' },
+            ],
+            tags: [
+                { id: 25, title: 'Keyword Event' },
+                { id: 26, title: 'Niche Interest Event' },
+                { id: 27, title: 'Specific Skill Event' },
+                { id: 28, title: 'Detailed Subject Event' },
+            ],
+            experience: [
+                { id: 29, title: 'Virtual Event' },
+                { id: 30, title: 'In-person Event' },
+                { id: 31, title: 'Hybrid Event' },
+                { id: 32, title: 'Interactive Workshop' },
+                { id: 33, title: 'Lecture-style Presentation' },
+                { id: 34, title: 'Hands-on Training Session' },
+            ],
+        };
+        return sampleEvents[category] || [];
+    }
+</script>
+{% endblock %}

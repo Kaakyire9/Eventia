@@ -12,5 +12,5 @@ urlpatterns = [
     path('events/<int:pk>/like/', like_event, name='like_event'),
     path('comments/<int:pk>/update/', update_comment, name='update_comment'),
     path('comments/<int:pk>/delete/', delete_comment, name='delete_comment'),
-    path('', home, name='home'),
+    path('', home, name='home'),  # Home page
 ]

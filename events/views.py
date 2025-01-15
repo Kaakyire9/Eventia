@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden, JsonResponse
 from django.core.paginator import Paginator
+from django.utils import timezone
 from .forms import EventForm, CommentForm
 from .models import Event, Like, Comment
 
@@ -108,7 +109,17 @@ def delete_comment(request, pk):
     return render(request, 'events/delete_comment.html', {'comment': comment})
 
 def home(request):
-    return render(request, 'events/event_list.html')
+    # Get the current date
+    current_date = timezone.now().date()
+
+    # Get upcoming events (events that are closer)
+    upcoming_events = Event.objects.filter(date__gte=current_date).order_by('date')[:6]
+
+    # Calculate the number of days left for each event
+    for event in upcoming_events:
+        event.days_left = (event.date - current_date).days
+
+    return render(request, 'home.html', {'upcoming_events': upcoming_events})
 
 def about(request):
     return render(request, 'events/about.html')
