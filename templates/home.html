@@ -107,6 +107,7 @@ Home
                         <p class="card-text">
                             <i class="fas fa-thumbs-up"></i> {{ event.likes.count }} Likes
                             <i class="fas fa-comment"></i> {{ event.comments.count }} Comments
+                            <i class="fas fa-users"></i> Attendees: {{ event.attendees_count }}
                         </p>
                         <p class="card-text"><strong>{{ event.days_left }} days left</strong></p>
                         <a href="{% url 'event_detail' event.pk %}" class="btn btn-primary">View Details</a>

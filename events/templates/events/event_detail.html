@@ -41,11 +41,15 @@ Event Details
             <p><strong>Time:</strong> {{ event.time }}</p>
             <p><strong>Location:</strong> {{ event.location }}</p>
             <p><strong>Organizer:</strong> {{ event.organizer }}</p>
+            <p><i class="fas fa-users"></i> Attendees: {{ event.attendees_count }}</p>
             
             {% if user == event.organizer %}
                 <div class="mt-3">
                     <a href="{% url 'update_event' event.pk %}" class="btn btn-warning">Update</a>
-                    <a href="{% url 'delete_event' event.pk %}" class="btn btn-danger">Delete</a>
+                    <form action="{% url 'delete_event' event.id %}" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Delete Event</button>
+                    </form>
                 </div>
             {% endif %}
         </div>

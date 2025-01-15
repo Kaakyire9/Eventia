@@ -16,6 +16,9 @@ class Event(models.Model):
     def __str__(self):
         return self.title
 
+    def attendees_count(self):
+        return self.attendees.filter(approved=True).count()
+
 class Like(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='likes')
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

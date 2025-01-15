@@ -1,5 +1,6 @@
 <!-- filepath: /workspace/Eventia/events/templates/events/event_list.html-->
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
 
@@ -30,6 +31,7 @@
                             <i class="fas fa-thumbs-up"></i> {{ event.likes.count }} Likes
                             <i class="fas fa-comment"></i> {{ event.comments.count }} Comments
                         </p>
+                        <p><i class="fas fa-users"></i> Attendees: {{ event.attendees_count }}</p>
                         <a href="{% url 'event_detail' event.pk %}" class="btn btn-primary">View Details</a>
                     </div>
                 </div>
