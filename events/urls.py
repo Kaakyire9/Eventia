@@ -1,6 +1,6 @@
 # urls.py
 from django.urls import path
-from .views import create_event, event_list, home, about, event_detail, update_event, delete_event, like_event, update_comment, delete_comment, request_attendance, approve_attendance
+from .views import create_event, event_list, home, about, event_detail, update_event, delete_event, like_event, update_comment, delete_comment, request_attendance, approve_attendance, add_comment
 
 urlpatterns = [
     path('about/', about, name='about'), 
@@ -14,5 +14,6 @@ urlpatterns = [
     path('comments/<int:pk>/delete/', delete_comment, name='delete_comment'),
     path('events/<int:event_id>/request_attendance/', request_attendance, name='request_attendance'),
     path('attendees/<int:attendee_id>/approve/', approve_attendance, name='approve_attendance'),
+    path('events/<int:event_id>/add_comment/', add_comment, name='add_comment'),
     path('', home, name='home'),  # Home page
 ]

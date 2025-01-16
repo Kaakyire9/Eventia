@@ -6,7 +6,7 @@ body {
     font-family: Lato, sans-serif;
     font-size: 1.4rem;
     font-weight: 700;
-    color: #4A4A4F;
+    color: #1111e1;
 }
 
 .red-o {
@@ -22,7 +22,7 @@ body {
 }
 
 .dark-bg {
-    background-color: #445261;
+    background-color: #0c7ceb;
 }
 
 .main-bg {
@@ -158,4 +158,25 @@ body {
 
 .approval {
     color: rgb(222, 146, 168);
+}
+
+.navbar-custom {
+    background-color: #36454F; /* Custom background color */
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+    color: #fff; /* Custom text color */
+}
+
+.navbar-custom .nav-link:hover {
+    color: #E84610; /* Custom hover color */
+}
+
+.navbar-brand img {
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.navbar-brand img:hover {
+    box-shadow: 0 0 15px rgba(232, 70, 16, 0.8); /* Glow effect */
 }

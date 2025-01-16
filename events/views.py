@@ -6,6 +6,7 @@ from django.core.paginator import Paginator
 from django.utils import timezone
 from .forms import EventForm, CommentForm
 from .models import Event, Like, Comment, Attendee
+from django.contrib import messages
 
 @login_required
 def create_event(request):
@@ -28,27 +29,20 @@ def event_list(request):
     page_obj = paginator.get_page(page_number)
     return render(request, 'events/event_list.html', {'page_obj': page_obj, 'post_list': page_obj})
 
-@login_required
 def event_detail(request, pk):
     event = get_object_or_404(Event, pk=pk)
-    comments = event.comments.all()
-    is_liked = event.likes.filter(user=request.user).exists()
-    if request.method == 'POST':
-        comment_form = CommentForm(request.POST)
-        if comment_form.is_valid():
-            comment = comment_form.save(commit=False)
-            comment.event = event
-            comment.user = request.user
-            comment.save()
-            return redirect('event_detail', pk=event.pk)
-    else:
-        comment_form = CommentForm()
-    return render(request, 'events/event_detail.html', {
+    attendance_requested = None
+    if request.user.is_authenticated:
+        attendance_requested = event.attendees.filter(user=request.user).first()
+    comments = Comment.objects.filter(event=event).order_by('-created_at')  # Order by created_at descending
+    comment_form = CommentForm()
+    context = {
         'event': event,
+        'attendance_requested': attendance_requested,
         'comments': comments,
-        'is_liked': is_liked,
-        'comment_form': comment_form
-    })
+        'comment_form': comment_form,
+    }
+    return render(request, 'events/event_detail.html', context)
 
 @login_required
 def like_event(request, pk):
@@ -108,6 +102,30 @@ def delete_comment(request, pk):
         return redirect('event_detail', pk=event_pk)
     return render(request, 'events/delete_comment.html', {'comment': comment})
 
+@login_required
+def add_comment(request, event_id):
+    event = get_object_or_404(Event, id=event_id)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.event = event
+            comment.user = request.user
+            comment.save()
+            if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+                return JsonResponse({
+                    'success': True,
+                    'comment': {
+                        'pk': comment.pk,
+                        'content': comment.content,
+                        'user': comment.user.username,
+                        'created_at': comment.created_at.strftime('%Y-%m-%d %H:%M:%S')
+                    },
+                    'comment_count': event.comments.count()
+                })
+            return redirect('event_detail', pk=event.id)
+    return JsonResponse({'success': False})
+
 def home(request):
     # Get the current date
     current_date = timezone.now().date()
@@ -132,7 +150,10 @@ def request_attendance(request, event_id):
         # New request created
         attendee.requested_at = timezone.now()
         attendee.save()
-    return redirect('event_detail', event_id=event.id)
+        messages.success(request, 'Request has been submitted and is waiting for approval.')
+    else:
+        messages.info(request, 'You have already requested to attend this event.')
+    return redirect('event_detail', pk=event.id)
 
 @login_required
 def approve_attendance(request, attendee_id):
@@ -141,6 +162,7 @@ def approve_attendance(request, attendee_id):
         attendee.approved = True
         attendee.approved_at = timezone.now()
         attendee.save()
-    return redirect('event_detail', event_id=attendee.event.id)
+        messages.success(request, 'Attendance request has been approved.')
+    return redirect('event_detail', pk=attendee.event.id)
 
 
