@@ -146,15 +146,17 @@ Event Details
             })
             .then(response => response.json())
             .then(data => {
-                document.getElementById('like-count').innerText = data.like_count;
-                if (data.is_liked) {
-                    this.innerHTML = `<i class="fas fa-thumbs-up"></i> Liked (${data.like_count})`;
-                    this.classList.remove('btn-primary');
-                    this.classList.add('btn-success');
-                } else {
-                    this.innerHTML = `<i class="fas fa-thumbs-up"></i> Like (${data.like_count})`;
-                    this.classList.remove('btn-success');
-                    this.classList.add('btn-primary');
+                if (data.success) {
+                    document.getElementById('like-count').innerText = data.like_count;
+                    if (data.is_liked) {
+                        likeButton.innerHTML = `<i class="fas fa-thumbs-up"></i> Liked (${data.like_count})`;
+                        likeButton.classList.remove('btn-primary');
+                        likeButton.classList.add('btn-success');
+                    } else {
+                        likeButton.innerHTML = `<i class="fas fa-thumbs-up"></i> Like (${data.like_count})`;
+                        likeButton.classList.remove('btn-success');
+                        likeButton.classList.add('btn-primary');
+                    }
                 }
             });
         });

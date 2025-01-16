@@ -47,15 +47,19 @@ def event_detail(request, pk):
 @login_required
 def like_event(request, pk):
     event = get_object_or_404(Event, pk=pk)
-    like, created = Like.objects.get_or_create(event=event, user=request.user)
+    like, created = Like.objects.get_or_create(user=request.user, event=event)
     if not created:
         like.delete()
-    if request.is_ajax():
+        is_liked = False
+    else:
+        is_liked = True
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         return JsonResponse({
-            'like_count': event.likes.count(),
-            'is_liked': created
+            'success': True,
+            'is_liked': is_liked,
+            'like_count': event.likes.count()
         })
-    return redirect('event_detail', pk=pk)
+    return redirect('event_detail', pk=event.pk)
 
 @login_required
 def update_event(request, pk):
