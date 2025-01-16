@@ -16,7 +16,8 @@ def create_event(request):
             event = form.save(commit=False)
             event.organizer = request.user  # Set the organizer to the current user
             event.save()
-            return redirect('event_list')
+            messages.success(request, f'Event "{event.title}" successfully created!')
+            return redirect('event_detail', pk=event.pk)
     else:
         form = EventForm()
     return render(request, 'events/create_event.html', {'form': form})

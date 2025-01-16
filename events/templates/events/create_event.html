@@ -1,98 +1,88 @@
-<!-- create_event.html -->
 {% extends "base.html" %}
 {% load static %}
+{% load custom_filters %}
 
-{% block title %}
-Create Event
-{% endblock %}
+{% block title %}Create Event{% endblock %}
 
 {% block content %}
 <div class="container mt-5">
-    <h1>Create Event</h1>
-    <div class="progress mb-4">
-        <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="mb-0">Create Event</h2>
+                </div>
+                <div class="card-body">
+                    <div class="progress mb-4">
+                        <div id="progress-bar" class="progress-bar bg-success" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <form id="create-event-form" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-step">
+                            <div class="mb-3">
+                                {{ form.title.label_tag }}
+                                {{ form.title|add_class:"form-control" }}
+                                <div class="invalid-feedback">Please provide a valid title.</div>
+                            </div>
+                            <div class="mb-3">
+                                {{ form.description.label_tag }}
+                                {{ form.description|add_class:"form-control" }}
+                                <div class="invalid-feedback">Please provide a valid description.</div>
+                            </div>
+                        </div>
+                        <div class="form-step" style="display: none;">
+                            <div class="mb-3">
+                                {{ form.date.label_tag }}
+                                {{ form.date|add_class:"form-control" }}
+                                <div class="invalid-feedback">Please provide a valid date.</div>
+                            </div>
+                            <div class="mb-3">
+                                {{ form.time.label_tag }}
+                                {{ form.time|add_class:"form-control" }}
+                                <div class="invalid-feedback">Please provide a valid time.</div>
+                            </div>
+                        </div>
+                        <div class="form-step" style="display: none;">
+                            <div class="mb-3">
+                                {{ form.location.label_tag }}
+                                {{ form.location|add_class:"form-control" }}
+                                <div class="invalid-feedback">Please provide a valid location.</div>
+                            </div>
+                            <div class="mb-3">
+                                {{ form.capacity.label_tag }}
+                                {{ form.capacity|add_class:"form-control" }}
+                                <div class="invalid-feedback">Please provide a valid capacity.</div>
+                            </div>
+                        </div>
+                        <div class="form-step" style="display: none;">
+                            <div class="mb-3">
+                                {{ form.image.label_tag }}
+                                {{ form.image|add_class:"form-control" }}
+                                <div class="invalid-feedback">Please provide a valid image.</div>
+                            </div>
+                            <div class="mb-3">
+                                {{ form.video.label_tag }}
+                                {{ form.video|add_class:"form-control" }}
+                                <div class="invalid-feedback">Please provide a valid video.</div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between mt-4">
+                            <button type="button" class="btn btn-secondary" onclick="prevStep()" id="prevBtn" style="display: none;">Previous</button>
+                            <button type="button" class="btn btn-primary" onclick="nextStep()" id="nextBtn">Next</button>
+                            <button type="submit" class="btn btn-success" id="submitBtn" style="display: none;">Create Event</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-    <form id="create-event-form" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="form-step">
-            <div class="mb-3">
-                {{ form.title.label_tag }}
-                {{ form.title }}
-                <div class="invalid-feedback">
-                    Please provide a valid title.
-                </div>
-            </div>
-            <div class="mb-3">
-                {{ form.description.label_tag }}
-                {{ form.description }}
-                <div class="invalid-feedback">
-                    Please provide a valid description.
-                </div>
-            </div>
-            <button type="button" class="btn btn-primary" onclick="nextStep()">Next</button>
-        </div>
-        <div class="form-step" style="display: none;">
-            <div class="mb-3">
-                {{ form.date.label_tag }}
-                {{ form.date }}
-                <div class="invalid-feedback">
-                    Please provide a valid date.
-                </div>
-            </div>
-            <div class="mb-3">
-                {{ form.time.label_tag }}
-                {{ form.time }}
-                <div class="invalid-feedback">
-                    Please provide a valid time.
-                </div>
-            </div>
-            <button type="button" class="btn btn-secondary" onclick="prevStep()">Previous</button>
-            <button type="button" class="btn btn-primary" onclick="nextStep()">Next</button>
-        </div>
-        <div class="form-step" style="display: none;">
-            <div class="mb-3">
-                {{ form.location.label_tag }}
-                {{ form.location }}
-                <div class="invalid-feedback">
-                    Please provide a valid location.
-                </div>
-            </div>
-            <div class="mb-3">
-                {{ form.capacity.label_tag }}
-                {{ form.capacity }}
-                <div class="invalid-feedback">
-                    Please provide a valid capacity.
-                </div>
-            </div>
-            <button type="button" class="btn btn-secondary" onclick="prevStep()">Previous</button>
-            <button type="button" class="btn btn-primary" onclick="nextStep()">Next</button>
-        </div>
-        <div class="form-step" style="display: none;">
-            <div class="mb-3">
-                {{ form.image.label_tag }}
-                {{ form.image }}
-                <div class="invalid-feedback">
-                    Please provide a valid image.
-                </div>
-            </div>
-            <div class="mb-3">
-                {{ form.video.label_tag }}
-                {{ form.video }}
-                <div class="invalid-feedback">
-                    Please provide a valid video.
-                </div>
-            </div>
-            <button type="button" class="btn btn-secondary" onclick="prevStep()">Previous</button>
-            <button type="submit" class="btn btn-primary">Create Event</button>
-        </div>
-    </form>
 </div>
 
 <!-- Include TinyMCE from CDN with API key -->
 <script src="https://cdn.tiny.cloud/1/ehgfnoldpm58zd26rm85ihmd7yw2vcv2gft0cporiu3pts7j/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
     tinymce.init({
-        selector: 'textarea',  // Change this value according to your HTML
+        selector: 'textarea',
         plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
         toolbar_mode: 'floating',
         setup: function (editor) {
@@ -105,6 +95,9 @@ Create Event
     let currentStep = 0;
     const formSteps = document.querySelectorAll('.form-step');
     const progressBar = document.getElementById('progress-bar');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const submitBtn = document.getElementById('submitBtn');
 
     function updateProgressBar() {
         const progress = (currentStep / (formSteps.length - 1)) * 100;
@@ -117,6 +110,9 @@ Create Event
             formStep.style.display = index === step ? 'block' : 'none';
         });
         updateProgressBar();
+        prevBtn.style.display = step > 0 ? 'block' : 'none';
+        nextBtn.style.display = step < formSteps.length - 1 ? 'block' : 'none';
+        submitBtn.style.display = step === formSteps.length - 1 ? 'block' : 'none';
     }
 
     function nextStep() {
