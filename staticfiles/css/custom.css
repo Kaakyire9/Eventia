@@ -1,0 +1,110 @@
+/* filepath: /workspace/Eventia/static/css/custom.css */
+.hero-section {
+    height: 70vh; /* Reduce the height from 100vh to 70vh */
+    background-color: #f8f9fa;
+    border: 2px solid #007bff; /* Highlight the border */
+}
+
+.hero-section .display-4 {
+    font-weight: bold;
+    color: #343a40;
+}
+
+.hero-section .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.circular-icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #007bff;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    position: relative;
+}
+
+.circular-icon p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #343a40;
+}
+
+.circular-icon:hover {
+    background-color: #0056b3;
+}
+
+.event-items {
+    display: none;
+    position: absolute;
+    top: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.event-items .list-group-item {
+    padding: 5px;
+    font-size: 12px;
+}
+
+.event-items .list-group-item a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.event-items .list-group-item a:hover {
+    text-decoration: underline;
+}
+
+.event-items .list-group-item i {
+    margin-right: 5px;
+}
+
+.groupings-container {
+    margin-top: 20px; /* Adjust this value to reduce the distance */
+}
+
+.footer {
+    margin-top: auto;
+}
+
+.upcoming-events {
+    display: flex;
+    overflow-x: auto;
+    padding: 10px 0;
+    white-space: nowrap; /* Ensure items do not wrap */
+}
+
+.event-card {
+    flex: 0 0 auto;
+    width: 25%; /* Maintain the width to ensure 4 cards fit uniformly */
+    margin-right: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    white-space: normal; /* Ensure content inside the card wraps */
+}
+
+.event-card h5 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.event-card p {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
