@@ -19,7 +19,7 @@ def profile_view(request):
 def edit_profile(request):
     profile, created = UserProfile.objects.get_or_create(user=request.user)
     if request.method == 'POST':
-        form = UserProfileForm(request.POST, instance=profile)
+        form = UserProfileForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             form.save()
             logger.info("Profile saved successfully")
@@ -32,4 +32,11 @@ def edit_profile(request):
     else:
         form = UserProfileForm(instance=profile)
     return render(request, 'user_profiles/edit_profile.html', {'form': form})
+
+@login_required
+def reset_profile_image(request):
+    profile = request.user.profile
+    profile.profile_image = 'placeholder'  # Set to the public ID of the placeholder image
+    profile.save()
+    return redirect('profile')
 

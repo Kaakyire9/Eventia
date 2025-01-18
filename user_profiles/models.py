@@ -7,9 +7,13 @@ class UserProfile(models.Model):
     bio = models.TextField(max_length=500, blank=True)
     location = models.CharField(max_length=30, blank=True)
     birth_date = models.DateField(null=True, blank=True)
-    profile_image = CloudinaryField('image', default='nobody')  # Use the public ID of the uploaded image
+    profile_image = CloudinaryField('image', default='placeholder')  # Use the public ID of the uploaded image
     user_phone_number = models.CharField(max_length=15, blank=True)
     address = models.TextField(max_length=500, blank=True)
 
     def __str__(self):
         return self.user.username
+
+    def reset_profile_image(self):
+        self.profile_image = 'placeholder'  # Set to the public ID of the placeholder image
+        self.save()

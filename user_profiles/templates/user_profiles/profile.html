@@ -6,10 +6,10 @@
 {% block content %}
 <div class="container mt-5">
     <h1>{{ profile.user.username }}'s Profile</h1>
-    {% if profile.profile_image %}
-        {% cloudinary profile.profile_image width=300 height=300 crop="fill" %}
+    {% if "placeholder" in profile.profile_image.url %}
+    <img src="{% static 'images/nobody.jpg' %}" width="25%;" alt="placeholder image">
     {% else %}
-        <img src="{% static 'images/nobody.jpg' %}" width="300" height="300" alt="placeholder image">
+    <img src="{{ profile.profile_image.url }}" width="25%;" alt="{{ profile.title }}">
     {% endif %}
     <p><strong>Bio:</strong> {{ profile.bio }}</p>
     <p><strong>Location:</strong> {{ profile.location }}</p>
@@ -17,5 +17,6 @@
     <p><strong>Phone Number:</strong> {{ profile.user_phone_number }}</p>
     <p><strong>Address:</strong> {{ profile.address }}</p>
     <a href="{% url 'edit_profile' %}" class="btn btn-primary">Edit Profile</a>
+    <a href="{% url 'reset_profile_image' %}" class="btn btn-secondary">Use Placeholder Image</a>
 </div>
 {% endblock %}
