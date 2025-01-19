@@ -1,4 +1,3 @@
-<!-- filepath: /workspace/Eventia/templates/home.html -->
 {% extends "base.html" %}
 {% load static %}
 
@@ -8,8 +7,8 @@ Home
 
 {% block content %}
 <!-- Header Section -->
-<header>
-    <div class="container hero-section">
+<header class="home-background">
+    <div class="container-fluid hero-section">
         <div class="row">
             <div class="col-md-6 d-flex align-items-center justify-content-center">
                 <div class="text-center">
@@ -19,7 +18,7 @@ Home
             </div>
             <div class="col-md-6">
                 <!-- Placeholder for the powerful image -->
-                <img src="{% static 'images/event_hero.jpg' %}" class="img-fluid" alt="Powerful Image">
+                <img src="{% static 'images/eventia_hero_image_1.png' %}" class="img-fluid" alt="Powerful Image">
             </div>
         </div>
     </div>
@@ -28,60 +27,45 @@ Home
 <!-- Main Section -->
 <main>
     <div class="container groupings-container">
-        <div class="row text-center">
+        <div class="my-4 mt-5 text-center">
+            <h2>Browse your Event Type</h2>
+        </div>
+        <div class="row text-center my-4 mt-5">
             <div class="col-md-2">
-                <div class="circular-icon" data-category="subject">
+                <a href="#" class="circular-icon" data-category="subject">
                     <i class="fas fa-briefcase"></i>
-                    <p>By Subject</p>
-                    <ul class="list-group event-items" id="subject-items">
-                        <!-- Event items will be dynamically inserted here -->
-                    </ul>
-                </div>
+                    <p>Subject</p>
+                </a>
             </div>
             <div class="col-md-2">
-                <div class="circular-icon" data-category="type">
+                <a href="#" class="circular-icon" data-category="type">
                     <i class="fas fa-chalkboard-teacher"></i>
-                    <p>By Event Type</p>
-                    <ul class="list-group event-items" id="type-items">
-                        <!-- Event items will be dynamically inserted here -->
-                    </ul>
-                </div>
+                    <p>Event</p>
+                </a>
             </div>
             <div class="col-md-2">
-                <div class="circular-icon" data-category="audience">
+                <a href="#" class="circular-icon" data-category="audience">
                     <i class="fas fa-users"></i>
-                    <p>By Audience</p>
-                    <ul class="list-group event-items" id="audience-items">
-                        <!-- Event items will be dynamically inserted here -->
-                    </ul>
-                </div>
+                    <p>Audience</p>
+                </a>
             </div>
             <div class="col-md-2">
-                <div class="circular-icon" data-category="purpose">
+                <a href="#" class="circular-icon" data-category="purpose">
                     <i class="fas fa-bullseye"></i>
-                    <p>By Purpose</p>
-                    <ul class="list-group event-items" id="purpose-items">
-                        <!-- Event items will be dynamically inserted here -->
-                    </ul>
-                </div>
+                    <p>Purpose</p>
+                </a>
             </div>
             <div class="col-md-2">
-                <div class="circular-icon" data-category="tags">
+                <a href="#" class="circular-icon" data-category="tags">
                     <i class="fas fa-tags"></i>
-                    <p>By Tags</p>
-                    <ul class="list-group event-items" id="tags-items">
-                        <!-- Event items will be dynamically inserted here -->
-                    </ul>
-                </div>
+                    <p>Tags</p>
+                </a>
             </div>
             <div class="col-md-2">
-                <div class="circular-icon" data-category="experience">
+                <a href="#" class="circular-icon" data-category="experience">
                     <i class="fas fa-vr-cardboard"></i>
-                    <p>By Experience Type</p>
-                    <ul class="list-group event-items" id="experience-items">
-                        <!-- Event items will be dynamically inserted here -->
-                    </ul>
-                </div>
+                    <p>Experience</p>
+                </a>
             </div>
         </div>
     </div>

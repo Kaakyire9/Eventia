@@ -1,40 +1,73 @@
 /* filepath: /workspace/Eventia/static/css/custom.css */
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+header {
+    margin-bottom: 30px; /* Adjust the value as needed */
+}
+
 .hero-section {
-    height: 70vh; /* Reduce the height from 100vh to 70vh */
-    background-color: #f8f9fa;
-    border: 2px solid #007bff; /* Highlight the border */
+    height: 70vh; /* Adjust the height as needed */
+    background-image: url('/static/images/eventia_background_1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(10, 1, 1); /* Ensure text is readable */
+    text-align: center;
+    width: 100%;
 }
 
 .hero-section .display-4 {
     font-weight: bold;
-    color: #343a40;
+    color: #09417a;
 }
 
 .hero-section .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
+    background-color: #1A5F7A;
+    border-color: #ebba0a;
+    color: #ebba0a;
 }
 
 .circular-icon {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    background-color: #007bff;
+    background-color: #1A5F7A;;
     color: white;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     font-size: 24px;
     cursor: pointer;
     position: relative;
+    text-decoration: none; /* Remove underline from links */
+   
+}
+
+.circular-icon i {
+    font-size: 2rem; /* Adjust the size as needed */
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 50%;
+    background-color: #f0f0f0; /* Adjust the background color as needed */
+    color: #ebba0a; /* Adjust the icon color as needed */
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 .circular-icon p {
-    margin-top: 10px;
-    font-size: 14px;
-    color: #343a40;
+    margin: 0;
+    font-size: 1rem; /* Adjust the font size as needed */
+    color: #ebba0a; /* Adjust the text color as needed */
 }
 
 .circular-icon:hover {
@@ -108,3 +141,8 @@
     font-size: 14px;
     margin-bottom: 5px;
 }
+
+/*.container.custom-padding {
+    padding-left: 0;  /* Adjust the value as needed */
+    /*padding-right: 0; /* Adjust the value as needed 
+} */
