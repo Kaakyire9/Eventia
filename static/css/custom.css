@@ -8,18 +8,18 @@ header {
 }
 
 .hero-section {
-    height: 70vh; /* Adjust the height as needed */
-    background-image: url('/static/images/eventia_background_1.png');
+    height: 75vh; /* Full viewport height */
+    background:url('/static/images/eventia_background_1.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgb(10, 1, 1); /* Ensure text is readable */
-    text-align: center;
-    width: 100%;
+    color: white; /* Ensure text is readable */
+    text-align: left;
+    position: relative;
+    overflow: hidden;
 }
 
 .hero-section .display-4 {
@@ -31,6 +31,63 @@ header {
     background-color: #1A5F7A;
     border-color: #ebba0a;
     color: #ebba0a;
+}
+
+.hero-section .background-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.hero-section .background-animation div {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    animation: move 10s infinite;
+}
+
+@keyframes move {
+    0% {
+        transform: translateY(0) translateX(0);
+    }
+    50% {
+        transform: translateY(-100vh) translateX(100vw);
+    }
+    100% {
+        transform: translateY(0) translateX(0);
+    }
+}
+
+/* Main Section */
+.groupings-container {
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.groupings-container .background-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.groupings-container .background-animation div {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    animation: move 10s infinite;
 }
 
 .circular-icon {
@@ -49,7 +106,7 @@ header {
     cursor: pointer;
     position: relative;
     text-decoration: none; /* Remove underline from links */
-   
+    transition: transform 0.3s ease;
 }
 
 .circular-icon i {
@@ -72,6 +129,12 @@ header {
 
 .circular-icon:hover {
     background-color: #0056b3;
+    transform: scale(1.1);
+}
+
+.circular-icon:hover i {
+    background-color: #1A5F7A;
+    color: #fff;
 }
 
 .event-items {
@@ -111,25 +174,53 @@ header {
 
 .footer {
     margin-top: auto;
+    background: linear-gradient(135deg, #333333 50%, #555555 50%);
+    color: white;
+    padding: 20px 0;
+}
+
+.footer h5 {
+    font-weight: bold;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.footer .social-icons a {
+    font-size: 1.5rem;
+    margin-right: 10px;
 }
 
 .upcoming-events {
     display: flex;
-    overflow-x: auto;
-    padding: 10px 0;
-    white-space: nowrap; /* Ensure items do not wrap */
+    flex-wrap: wrap;
+    gap: 20px; /* Adjust the gap between cards as needed */
 }
 
 .event-card {
-    flex: 0 0 auto;
-    width: 25%; /* Maintain the width to ensure 4 cards fit uniformly */
-    margin-right: 10px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #fff;
+    flex: 1 1 calc(33.333% - 20px); /* Default to 3 cards per row */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    white-space: normal; /* Ensure content inside the card wraps */
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 500px; /* Set a fixed height for the cards */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+}
+
+.event-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .event-card h5 {
@@ -139,10 +230,106 @@ header {
 
 .event-card p {
     font-size: 14px;
-    margin-bottom: 5px;
+    margin-bottom: 10px; /* Add margin to paragraphs */
 }
 
-/*.container.custom-padding {
-    padding-left: 0;  /* Adjust the value as needed */
-    /*padding-right: 0; /* Adjust the value as needed 
-} */
+.event-card img,
+.event-card video {
+    width: 100%; /* Ensure the media takes the full width of the card */
+    height: 200px; /* Set a fixed height for the media */
+    object-fit: cover; /* Ensure the media covers the area without distortion */
+    margin-bottom: 15px; /* Add margin to images and videos */
+}
+
+.event-card .btn {
+    margin-top: 10px; /* Add margin to the button */
+}
+
+h2 {
+    font-size: 2rem; /* Adjust the size as needed */
+    font-weight: bold;
+    color: #09417a; /* Use a color that matches your website's color scheme */
+    text-align: center;
+    margin-top: 20px; /* Add space above the heading */
+    margin-bottom: 20px; /* Add space below the heading */
+    padding: 10px; /* Add padding for better spacing */
+    
+}
+
+/* Styles for tablets */
+@media (max-width: 1024px) {
+    .hero-section {
+        height: 50vh;
+        background-attachment: scroll;
+    }
+
+    .event-card {
+        height: auto; /* Adjust height for smaller screens */
+    }
+
+    .event-card img,
+    .event-card video {
+        height: 150px; /* Adjust media height for smaller screens */
+    }
+}
+
+/* Styles for mobile phones */
+@media (max-width: 767px) {
+    .hero-section {
+        height: auto;
+        background-attachment: scroll;
+        padding: 20px;
+    }
+
+    .hero-section .display-4 {
+        font-size: 1.5rem;
+    }
+
+    .hero-section .btn-primary {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+
+    .event-card {
+        flex: 1 1 calc(50% - 20px); /* 2 cards per row on smaller screens */
+        height: auto; /* Adjust height for smaller screens */
+    }
+
+    .event-card img,
+    .event-card video {
+        height: 100px; /* Adjust media height for smaller screens */
+    }
+}
+
+.btn-primary {
+    background-color: #1A5F7A;
+    border-color: #ebba0a;
+    color: #ebba0a;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #ebba0a;
+    color: #1A5F7A;
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.card-header {
+    background-color: #1A5F7A;
+    color: #fff;
+    padding: 15px;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.alert {
+    margin-top: 20px;
+}

@@ -1,4 +1,3 @@
-<!-- filepath: /workspace/Eventia/events/templates/events/event_detail.html -->
 {% extends "base.html" %}
 {% load static %}
 
@@ -22,7 +21,7 @@ Event Details
                     <img src="{{ event.image.url }}" class="img-fluid" alt="{{ event.title }}">
                 </div>
             {% endif %}
-            
+
             {% if event.video %}
                 <div class="mb-3">
                     <video controls class="img-fluid">
@@ -31,6 +30,7 @@ Event Details
                     </video>
                 </div>
             {% endif %}
+
             <div class="mt-3">
                 <a href="#" class="btn btn-primary" id="like-button" data-event-id="{{ event.pk }}">
                     <i class="fas fa-thumbs-up"></i> Like (<span id="like-count">{{ event.likes.count }}</span>)
@@ -42,6 +42,7 @@ Event Details
                     <i class="fas fa-comment"></i> Comment (<span id="comment-count">{{ event.comments.count }}</span>)
                 </button>
             </div>
+
             <h2 class="mt-5">{{ event.title }}</h2>
             <p><strong>Description:</strong> {{ event.description|safe }}</p>
             <p><strong>Date:</strong> {{ event.date }}</p>
@@ -49,7 +50,7 @@ Event Details
             <p><strong>Location:</strong> {{ event.location }}</p>
             <p><strong>Organizer:</strong> {{ event.organizer }}</p>
             <p><i class="fas fa-users"></i> Attendees: {{ event.attendees_count }}</p>
-            
+
             {% if user == event.organizer %}
                 <div class="mt-3">
                     <a href="{% url 'update_event' event.pk %}" class="btn btn-warning">Update</a>
@@ -75,6 +76,7 @@ Event Details
                 {% endif %}
             {% endif %}
         </div>
+
         <div class="col-md-4">
             <div class="card mt-5">
                 <div class="card-body">
@@ -95,6 +97,7 @@ Event Details
                     </ul>
                 </div>
             </div>
+
             <div class="mt-3">
                 <form method="POST" id="comment-form" action="{% url 'add_comment' event.id %}" style="display: none;">
                     {% csrf_token %}
@@ -197,7 +200,7 @@ Event Details
                             <a href="/comments/${data.comment.pk}/delete/" class="btn btn-danger btn-sm">Delete</a>
                         </div>
                     `;
-                    commentList.appendChild(newComment);  // Append to the end to maintain order
+                    commentList.appendChild(newComment);
                     document.getElementById('comment-count').innerText = data.comment_count;
                     this.reset();
                 }

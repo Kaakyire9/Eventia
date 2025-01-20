@@ -24,11 +24,11 @@ def create_event(request):
 
 @login_required
 def event_list(request):
-    events = Event.objects.filter(date__gte='2024-01-01').order_by('date')
-    paginator = Paginator(events, 5)  # 5 events per page
+    events = Event.objects.all()
+    paginator = Paginator(events, 6)  # Show 6 events per page
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    return render(request, 'events/event_list.html', {'page_obj': page_obj, 'post_list': page_obj})
+    return render(request, 'events/event_list.html', {'page_obj': page_obj})
 
 def event_detail(request, pk):
     event = get_object_or_404(Event, pk=pk)
@@ -69,6 +69,7 @@ def update_event(request, pk):
         form = EventForm(request.POST, request.FILES, instance=event)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Event updated successfully!')
             return redirect('event_detail', pk=event.pk)
     else:
         form = EventForm(instance=event)

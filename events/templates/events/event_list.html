@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block title %}
-
+Event List
 {% endblock %}
 
 {% block content %}
@@ -14,7 +14,7 @@
     <div class="row">
         {% for event in page_obj %}
             <div class="col-md-4 mb-4">
-                <div class="card">
+                <div class="event-card">
                     {% if event.image %}
                         <img src="{{ event.image.url }}" class="card-img-top" alt="{{ event.title }}">
                     {% elif event.video %}

@@ -7,16 +7,23 @@ Home
 
 {% block content %}
 <!-- Header Section -->
-<header class="home-background">
-    <div class="container-fluid hero-section">
+<header class="hero-section">
+    <div class="background-animation">
+        <div style="top: 10%; left: 20%;"></div>
+        <div style="top: 30%; left: 40%;"></div>
+        <div style="top: 50%; left: 60%;"></div>
+        <div style="top: 70%; left: 80%;"></div>
+        <div style="top: 90%; left: 20%;"></div>
+    </div>
+    <div class="container">
         <div class="row">
-            <div class="col-md-6 d-flex align-items-center justify-content-center">
+            <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
                 <div class="text-center">
                     <h1 class="display-4">Transform your event dreams into unforgettable experiences</h1>
                     <a href="{% url 'create_event' %}" class="btn btn-primary btn-lg mt-3">Create Event</a>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-12 col-md-6">
                 <!-- Placeholder for the powerful image -->
                 <img src="{% static 'images/eventia_hero_image_1.png' %}" class="img-fluid" alt="Powerful Image">
             </div>
@@ -31,37 +38,37 @@ Home
             <h2>Browse your Event Type</h2>
         </div>
         <div class="row text-center my-4 mt-5">
-            <div class="col-md-2">
+            <div class="col-md-2 col-sm-4 col-6">
                 <a href="#" class="circular-icon" data-category="subject">
                     <i class="fas fa-briefcase"></i>
                     <p>Subject</p>
                 </a>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 col-sm-4 col-6">
                 <a href="#" class="circular-icon" data-category="type">
                     <i class="fas fa-chalkboard-teacher"></i>
                     <p>Event</p>
                 </a>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 col-sm-4 col-6">
                 <a href="#" class="circular-icon" data-category="audience">
                     <i class="fas fa-users"></i>
                     <p>Audience</p>
                 </a>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 col-sm-4 col-6">
                 <a href="#" class="circular-icon" data-category="purpose">
                     <i class="fas fa-bullseye"></i>
                     <p>Purpose</p>
                 </a>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 col-sm-4 col-6">
                 <a href="#" class="circular-icon" data-category="tags">
                     <i class="fas fa-tags"></i>
                     <p>Tags</p>
                 </a>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 col-sm-4 col-6">
                 <a href="#" class="circular-icon" data-category="experience">
                     <i class="fas fa-vr-cardboard"></i>
                     <p>Experience</p>
@@ -73,7 +80,7 @@ Home
     <!-- Upcoming Events Section -->
     <div class="container mt-5">
         <h2>Upcoming Events</h2>
-        <div class="upcoming-events">
+        <div class="upcoming-events text-center">
             {% for event in upcoming_events|slice:":6" %}
                 <div class="event-card">
                     {% if event.image %}
@@ -94,7 +101,11 @@ Home
                             <i class="fas fa-users"></i> Attendees: {{ event.attendees_count }}
                         </p>
                         <p class="card-text"><strong>{{ event.days_left }} days left</strong></p>
-                        <a href="{% url 'event_detail' event.pk %}" class="btn btn-primary">View Details</a>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'event_detail' event.pk %}" class="btn btn-primary">View Details</a>
+                        {% else %}
+                            <a href="{% url 'account_signup' %}?next={% url 'event_detail' event.pk %}" class="btn btn-primary">Login to View</a>
+                        {% endif %}
                     </div>
                 </div>
             {% endfor %}
@@ -109,7 +120,7 @@ Home
 
 <script>
     document.querySelectorAll('.circular-icon').forEach(icon => {
-        icon.addEventListener('mouseenter', function() {
+        icon.addEventListener('mouseenter', function () {
             const category = this.getAttribute('data-category');
             const eventItems = document.getElementById(`${category}-items`);
 
@@ -129,7 +140,7 @@ Home
             eventItems.style.display = 'block';
         });
 
-        icon.addEventListener('mouseleave', function() {
+        icon.addEventListener('mouseleave', function () {
             const category = this.getAttribute('data-category');
             const eventItems = document.getElementById(`${category}-items`);
 
@@ -137,59 +148,5 @@ Home
             eventItems.style.display = 'none';
         });
     });
-
-    // Placeholder function to get events by category
-    function getEventsByCategory(category) {
-        // Replace this with actual logic to fetch events from the server
-        const sampleEvents = {
-            subject: [
-                { id: 1, title: '<i class="fa-solid fa-business-time"></i>Business Event' },
-                { id: 2, title: '<i class="fa-solid fa-flask-vial"></i>Science Event' },
-                { id: 3, title: '<i class="fa-brands fa-envira"></i>Environment Event' },
-                { id: 4, title: '<i class="fa-solid fa-palette"></i>Arts Event' },
-                { id: 5, title: '<i class="fa-solid fa-microchip"></i>Technology Event' },
-                { id: 6, title: '<i class="fa-solid fa-user-graduate"></i>Education Event' },
-            ],
-            type: [
-                { id: 7, title: '<i class="fa-solid fa-chart-simple"></i>Performance Event' },
-                { id: 8, title: '<i class="fa-solid fa-hands-praying"></i>Workshop Event' },
-                { id: 9, title: '<i class="fa-solid fa-users-gear"></i>Seminar Event' },
-                { id: 10, title: '<i class="fa-solid fa-people-roof"></i>Conference Event' },
-                { id: 11, title: '<i class="fa-solid fa-network-wired"></i>Networking Event' },
-                { id: 12, title: 'Social Gathering Event' },
-            ],
-            audience: [
-                { id: 13, title: 'Student Event' },
-                { id: 14, title: 'Professional Event' },
-                { id: 15, title: 'Entrepreneur Event' },
-                { id: 16, title: 'Academic Researcher Event' },
-                { id: 17, title: 'Community Member Event' },
-                { id: 18, title: 'Industry Specialist Event' },
-            ],
-            purpose: [
-                { id: 19, title: 'Educational Event' },
-                { id: 20, title: 'Networking Event' },
-                { id: 21, title: 'Fundraising Event' },
-                { id: 22, title: 'Professional Development Event' },
-                { id: 23, title: 'Entertainment Event' },
-                { id: 24, title: 'Community Engagement Event' },
-            ],
-            tags: [
-                { id: 25, title: 'Keyword Event' },
-                { id: 26, title: 'Niche Interest Event' },
-                { id: 27, title: 'Specific Skill Event' },
-                { id: 28, title: 'Detailed Subject Event' },
-            ],
-            experience: [
-                { id: 29, title: 'Virtual Event' },
-                { id: 30, title: 'In-person Event' },
-                { id: 31, title: 'Hybrid Event' },
-                { id: 32, title: 'Interactive Workshop' },
-                { id: 33, title: 'Lecture-style Presentation' },
-                { id: 34, title: 'Hands-on Training Session' },
-            ],
-        };
-        return sampleEvents[category] || [];
-    }
 </script>
 {% endblock %}
