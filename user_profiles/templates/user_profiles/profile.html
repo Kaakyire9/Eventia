@@ -5,18 +5,28 @@
 
 {% block content %}
 <div class="container mt-5">
-    <h1>{{ profile.user.username }}'s Profile</h1>
-    {% if "placeholder" in profile.profile_image.url %}
-    <img src="{% static 'images/nobody.jpg' %}" width="25%;" alt="placeholder image">
-    {% else %}
-    <img src="{{ profile.profile_image.url }}" width="25%;" alt="{{ profile.title }}">
-    {% endif %}
-    <p><strong>Bio:</strong> {{ profile.bio }}</p>
-    <p><strong>Location:</strong> {{ profile.location }}</p>
-    <p><strong>Birth Date:</strong> {{ profile.birth_date }}</p>
-    <p><strong>Phone Number:</strong> {{ profile.user_phone_number }}</p>
-    <p><strong>Address:</strong> {{ profile.address }}</p>
-    <a href="{% url 'edit_profile' %}" class="btn btn-primary">Edit Profile</a>
-    <a href="{% url 'reset_profile_image' %}" class="btn btn-secondary">Use Placeholder Image</a>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg">
+                <div class="card-header text-white text-center">
+                    <h3>{{ profile.user.username }}'s Profile</h3>
+                </div>
+                <div class="card-body text-center">
+                    {% if "placeholder" in profile.profile_image.url %}
+                        <img src="{% static 'images/nobody.jpg' %}" class="rounded-circle mb-3" style="width: 150px; height: 150px;" alt="placeholder image">
+                    {% else %}
+                        <img src="{{ profile.profile_image.url }}" class="rounded-circle mb-3" style="width: 150px; height: 150px;" alt="{{ profile.title }}">
+                    {% endif %}
+                    <p><strong>Bio:</strong> {{ profile.bio }}</p>
+                    <p><strong>Location:</strong> {{ profile.location }}</p>
+                    <p><strong>Birth Date:</strong> {{ profile.birth_date }}</p>
+                    <p><strong>Phone Number:</strong> {{ profile.user_phone_number }}</p>
+                    <p><strong>Address:</strong> {{ profile.address }}</p>
+                    <a href="{% url 'edit_profile' %}" class="btn btn-primary">Edit Profile</a>
+                    <a href="{% url 'reset_profile_image' %}" class="btn btn-secondary">Use Placeholder Image</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

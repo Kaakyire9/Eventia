@@ -324,12 +324,41 @@ h2 {
     background-color: #1A5F7A;
     color: #fff;
     padding: 15px;
+    text-align: center;
 }
 
 .card-body {
     padding: 20px;
 }
 
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: #fff;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    color: #fff;
+}
+
+.rounded-circle {
+    border-radius: 50%;
+}
+
 .alert {
     margin-top: 20px;
+}
+
+.form-control {
+    margin-bottom: 10px;
+}
+
+.invalid-feedback {
+    display: none;
+}
+
+.form-control.is-invalid ~ .invalid-feedback {
+    display: block;
 }

@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from .models import UserProfile
 from .forms import UserProfileForm
 import logging
@@ -17,18 +18,13 @@ def profile_view(request):
 
 @login_required
 def edit_profile(request):
-    profile, created = UserProfile.objects.get_or_create(user=request.user)
+    profile = request.user.profile
     if request.method == 'POST':
         form = UserProfileForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             form.save()
-            logger.info("Profile saved successfully")
-            logger.info("Saved Bio: %s", profile.bio)
-            logger.info("Saved Location: %s", profile.location)
-            logger.info("Saved Birth Date: %s", profile.birth_date)
+            messages.success(request, 'Your profile has been updated successfully!')
             return redirect('profile')
-        else:
-            logger.error("Form is not valid: %s", form.errors)
     else:
         form = UserProfileForm(instance=profile)
     return render(request, 'user_profiles/edit_profile.html', {'form': form})
