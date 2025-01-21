@@ -2,8 +2,10 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import UserProfile
-from .forms import UserProfileForm
+from .forms import UserProfileForm, ProfileForm
 import logging
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
 
 logger = logging.getLogger(__name__)
 
@@ -35,4 +37,19 @@ def reset_profile_image(request):
     profile.profile_image = 'placeholder'  # Set to the public ID of the placeholder image
     profile.save()
     return redirect('profile')
+
+@login_required
+def settings(request):
+    if request.method == 'POST':
+        password_form = PasswordChangeForm(request.user, request.POST)
+        if password_form.is_valid():
+            user = password_form.save()
+            update_session_auth_hash(request, user)  # Important to keep the user logged in
+            messages.success(request, 'Your password has been updated successfully.')
+            return redirect('settings')
+    else:
+        password_form = PasswordChangeForm(request.user)
+    return render(request, 'user_profiles/settings.html', {
+        'password_form': password_form,
+    })
 

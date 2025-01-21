@@ -8,3 +8,8 @@ class UserProfileForm(forms.ModelForm):
         widgets = {
             'birth_date': forms.DateInput(attrs={'type': 'date'}),
         }
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['bio', 'location', 'birth_date', 'profile_image', 'user_phone_number', 'address']

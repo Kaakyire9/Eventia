@@ -24,8 +24,9 @@ def create_event(request):
 
 @login_required
 def event_list(request):
-    events = Event.objects.all()
+    events = Event.objects.all().order_by('-date')  # Order by date (newest first)
     paginator = Paginator(events, 6)  # Show 6 events per page
+
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'events/event_list.html', {'page_obj': page_obj})

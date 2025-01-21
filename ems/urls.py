@@ -27,6 +27,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('events.urls')),  
     path('user_profiles/', include('user_profiles.urls')),  # Include user_profiles URLs
+    path("accounts/", include("django.contrib.auth.urls")),
+   
 ]
 
 if settings.DEBUG:

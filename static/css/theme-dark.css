@@ -1,0 +1,39 @@
+/* filepath: /workspace/Eventia/static/css/theme-dark.css */
+body {
+    background-color: #343a40; /* Dark Gray */
+    color: #ffffff; /* White */
+}
+
+h2 {
+    color: #ebba0a; /* Gold */
+}
+
+.btn-primary {
+    background-color: #ebba0a; /* Gold */
+    border-color: #ebba0a; /* Gold */
+    color: #343a40; /* Dark Gray */
+}
+
+.btn-primary:hover {
+    background-color: #ffffff; /* White */
+    color: #343a40; /* Dark Gray */
+}
+
+.card {
+    background-color: #444; /* Slightly lighter dark gray */
+    color: #ffffff; /* White */
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 255, 0.5), /* Blue glow */
+                0 0 25px rgba(128, 0, 128, 0.5), /* Purple glow */
+                0 0 35px rgba(255, 20, 147, 0.5); /* Pink glow */
+}
+
+.card-date {
+    color: #ebba0a; /* Gold */
+    font-weight: bold;
+}
