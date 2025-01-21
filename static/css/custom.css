@@ -1,7 +1,30 @@
 /* filepath: /workspace/Eventia/static/css/custom.css */
 body {
     font-family: 'Roboto', sans-serif;
+    background-color: #18d6e8;
 }
+
+.navbar-custom {
+    background-color: #1A5F7A;
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+    color: #fff; /* Custom text color */
+}
+
+.navbar-custom .nav-link:hover {
+    color: #E84610; /* Custom hover color */
+} 
+
+.navbar-brand img {
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.navbar-brand img:hover {
+    box-shadow: 0 0 15px rgba(232, 70, 16, 0.8); /* Glow effect */
+}
+
 
 header {
     margin-bottom: 30px; /* Adjust the value as needed */
@@ -9,7 +32,7 @@ header {
 
 .hero-section {
     height: 75vh; /* Full viewport height */
-    background:url('/static/images/eventia_background_1.png');
+    background: url('/static/images/eventia_background_1.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -94,7 +117,7 @@ header {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    background-color: #1A5F7A;;
+    background-color: #1A5F7A;
     color: white;
     display: flex;
     flex-direction: column;
@@ -128,7 +151,7 @@ header {
 }
 
 .circular-icon:hover {
-    background-color: #0056b3;
+    background-color: #E84610;
     transform: scale(1.1);
 }
 
@@ -150,27 +173,6 @@ header {
     z-index: 1000;
 }
 
-.event-items .list-group-item {
-    padding: 5px;
-    font-size: 12px;
-}
-
-.event-items .list-group-item a {
-    text-decoration: none;
-    color: #007bff;
-}
-
-.event-items .list-group-item a:hover {
-    text-decoration: underline;
-}
-
-.event-items .list-group-item i {
-    margin-right: 5px;
-}
-
-.groupings-container {
-    margin-top: 20px; /* Adjust this value to reduce the distance */
-}
 
 .footer {
     margin-top: auto;
@@ -309,7 +311,7 @@ h2 {
 }
 
 .btn-primary:hover {
-    background-color: #ebba0a;
+    background-color: #E84610;
     color: #1A5F7A;
 }
 

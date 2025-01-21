@@ -104,6 +104,24 @@ We chose a luxurious pure gold color scheme for the logo and key design elements
 
 Eventia aims to combine the best features of established platforms with innovative solutions, creating a user-friendly, comprehensive event management experience for both organizers and attendees.
 
+### Colour Scheme
+
+For Eventia, we carefully selected a color palette that embodies professionalism, trust, and excitement. Our chosen colors are:
+- Deep Blue ```#094174``` : Represents trust and professionalism 
+- Teal ```#1A5F7A``` : Evokes a sense of balance and stability
+- Gold ```#EBBA0A```: Symbolizes celebration and success
+- Light Blue ```#C1D6DF```: Provides a calming contrast
+This color scheme creates a harmonious blend that reflects Eventia's commitment to delivering exceptional event experiences. The deep blue and teal colors convey reliability and sophistication, while the gold accent adds a touch of luxury and celebration. The light blue offers a refreshing contrast, enhancing readability and user experience.
+Importantly, our color palette has passed the Color Blind Safe check on Adobe Color, ensuring that Eventia's design is accessible to users with various forms of color vision deficiency. This commitment to accessibility aligns with our goal of creating an inclusive platform for all event organizers and attendees.
+
+![eventia color pallete](documentation/final_views/eventia_color_pallete.jpeg)
+*Colour Scheme pallete for Eventia website*
+
+![eventia color pallete](documentation/final_views/eventia_color_conflict.png)
+*Accessibility checks for Eventia website colour scheme*
+
+### Font
+
 
 
 
