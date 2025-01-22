@@ -112,7 +112,7 @@ For Eventia, we carefully selected a color palette that embodies professionalism
 - Gold ```#EBBA0A```: Symbolizes celebration and success
 - Light Blue ```#C1D6DF```: Provides a calming contrast
 This color scheme creates a harmonious blend that reflects Eventia's commitment to delivering exceptional event experiences. The deep blue and teal colors convey reliability and sophistication, while the gold accent adds a touch of luxury and celebration. The light blue offers a refreshing contrast, enhancing readability and user experience.
-Importantly, our color palette has passed the Color Blind Safe check on Adobe Color, ensuring that Eventia's design is accessible to users with various forms of color vision deficiency. This commitment to accessibility aligns with our goal of creating an inclusive platform for all event organizers and attendees.
+Importantly, our color palette has passed the Color Blind Safe check on [Adobe Color](https://color.adobe.com/), ensuring that Eventia's design is accessible to users with various forms of color vision deficiency. This commitment to accessibility aligns with our goal of creating an inclusive platform for all event organizers and attendees.
 
 ![eventia color pallete](documentation/final_views/eventia_color_pallete.jpeg)
 *Colour Scheme pallete for Eventia website*
@@ -121,6 +121,23 @@ Importantly, our color palette has passed the Color Blind Safe check on Adobe Co
 *Accessibility checks for Eventia website colour scheme*
 
 ### Font
+For Eventia, two complementary [Google Fonts](https://fonts.google.com/) was carefully selected to enhance the user experience and reflect the platform's professional yet approachable nature:
+
+#### Roboto Slab Designed by Christian Robertson for Google
+*Main Body Font*
+- Chosen for its excellent readability and modern slab-serif style
+- Conveys a sense of reliability and professionalism, aligning with Eventia's commitment to delivering high-quality event management services.
+
+![eventia main font Roboto](documentation/final_views/eventia_main_font_Roboto.png)
+
+#### Smooch Sans Created by Fontsmiths and Sabrina Mariela Lopez
+*Heading Font*
+- Selected for its playful yet elegant sans-serif design
+- Adds a touch of creativity and excitement, mirroring the diverse range of events hosted on Eventia
+
+![eventia heading font Smooch](documentation/final_views/eventia_head_smooch_font.png)
+
+The combination of Roboto Slab's sturdy structure and Smooch Sans' dynamic character creates a perfect balance between professionalism and creativity. This pairing reflects Eventia's dual focus on providing a reliable platform for event organizers while celebrating the unique and exciting nature of each event.
 
 
 
@@ -128,7 +145,15 @@ Importantly, our color palette has passed the Color Blind Safe check on Adobe Co
 
 
 
-Citations:
+
+
+## Citations:
 [1] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/40879804/91578d7d-dc67-46c1-9847-33ee283695c6/paste.txt
+
 [2] https://www.cvent.com/uk
+
 [3] https://www.eventbrite.co.uk
+
+[4] https://color.adobe.com/
+
+[5] https://fonts.google.com/specimen/Smooch+Sans
