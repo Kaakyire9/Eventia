@@ -7,6 +7,7 @@ from django.utils import timezone
 from .forms import EventForm, CommentForm
 from .models import Event, Like, Comment, Attendee
 from django.contrib import messages
+from django.db.models import Count
 
 @login_required
 def create_event(request):
@@ -24,12 +25,24 @@ def create_event(request):
 
 @login_required
 def event_list(request):
-    events = Event.objects.all().order_by('-date')  # Order by date (newest first)
-    paginator = Paginator(events, 6)  # Show 6 events per page
+    sort_by = request.GET.get('sort_by', 'date_desc')
+    if sort_by == 'date_asc':
+        events = Event.objects.all().order_by('date')
+    elif sort_by == 'date_desc':
+        events = Event.objects.all().order_by('-date')
+    elif sort_by == 'title_asc':
+        events = Event.objects.all().order_by('title')
+    elif sort_by == 'title_desc':
+        events = Event.objects.all().order_by('-title')
+    elif sort_by == 'popularity':
+        events = Event.objects.all().annotate(like_count=Count('likes')).order_by('-like_count')
+    else:
+        events = Event.objects.all().order_by('-date')
 
+    paginator = Paginator(events, 6)  # Show 6 events per page
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    return render(request, 'events/event_list.html', {'page_obj': page_obj})
+    return render(request, 'events/event_list.html', {'page_obj': page_obj, 'sort_by': sort_by})
 
 def event_detail(request, pk):
     event = get_object_or_404(Event, pk=pk)

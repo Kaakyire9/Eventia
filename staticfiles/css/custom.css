@@ -4,6 +4,10 @@ body {
     background-color: #18d6e8;
 }
 
+h2, h3 {
+    font-family: 'Smooch Sans', sans-serif;
+}
+
 .navbar-custom {
     background-color: #1A5F7A;
 }
@@ -215,7 +219,7 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 500px; /* Set a fixed height for the cards */
+    height: 600px; /* Set a fixed height for the cards */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: left;
 }
@@ -238,7 +242,7 @@ header {
 .event-card img,
 .event-card video {
     width: 100%; /* Ensure the media takes the full width of the card */
-    height: 200px; /* Set a fixed height for the media */
+    height: 300px; /* Set a fixed height for the media */
     object-fit: cover; /* Ensure the media covers the area without distortion */
     margin-bottom: 15px; /* Add margin to images and videos */
 }
@@ -258,9 +262,6 @@ h2 {
     
 }
 
-h2, h3 {
-    font-family: 'Smooch Sans', sans-serif;
-}
 
 /* Styles for tablets */
 @media (max-width: 1024px) {
@@ -367,5 +368,58 @@ h2, h3 {
 
 .form-control.is-invalid ~ .invalid-feedback {
     display: block;
+}
+
+.sort-form {
+    margin-bottom: 20px;
+}
+
+.sort-form .form-group {
+    display: flex;
+    align-items: center;
+}
+
+.sort-form label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.step-links {
+    display: flex;
+    gap: 10px;
+}
+
+.page-link {
+    padding: 10px 15px;
+    background-color: #1A5F7A;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.page-link:hover {
+    background-color: #0056b3;
+}
+
+.current {
+    padding: 10px 15px;
+    background-color: #ebba0a;
+    color: #343a40;
+    border-radius: 5px;
+}
+
+.fixed-size {
+    width: 100%;
+    max-width: 600px; /* Adjust the max-width as needed */
+    height: auto;
+    max-height: 400px; /* Adjust the max-height as needed */
+    object-fit: cover; /* Ensure the media covers the area without distortion */
 }
 
