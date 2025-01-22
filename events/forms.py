@@ -7,8 +7,13 @@ class EventForm(forms.ModelForm):
         model = Event
         fields = ['title', 'description', 'date', 'time', 'location', 'image', 'video']
         widgets = {
-            'date': forms.DateInput(attrs={'type': 'date'}),
-            'time': forms.TimeInput(attrs={'type': 'time'})
+            'title': forms.TextInput(attrs={'class': 'form-control', 'required': 'required'}),
+            'description': forms.Textarea(attrs={'class': 'form-control', 'required': 'required'}),
+            'date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date', 'required': 'required'}),
+            'time': forms.TimeInput(attrs={'class': 'form-control', 'type': 'time', 'required': 'required'}),
+            'location': forms.TextInput(attrs={'class': 'form-control', 'required': 'required'}),
+            'image': forms.ClearableFileInput(attrs={'class': 'form-control',  'required': 'required'}),
+            'video': forms.ClearableFileInput(attrs={'class': 'form-control',  'required': 'required'}),
         }
 
 class CommentForm(forms.ModelForm):

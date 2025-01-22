@@ -16,54 +16,67 @@
                     <div class="progress mb-4">
                         <div id="progress-bar" class="progress-bar bg-success" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    <form id="create-event-form" method="post" enctype="multipart/form-data">
+                    <form id="create-event-form" method="post" enctype="multipart/form-data" novalidate>
                         {% csrf_token %}
+                        <!-- Step 1 -->
                         <div class="form-step">
                             <div class="mb-3">
                                 {{ form.title.label_tag }}
                                 {{ form.title|add_class:"form-control" }}
-                                <div class="invalid-feedback">Please provide a valid title.</div>
+                                {% for error in form.title.errors %}
+                                    <div class="text-danger small">{{ error }}</div>
+                                {% endfor %}
                             </div>
                             <div class="mb-3">
                                 {{ form.description.label_tag }}
                                 {{ form.description|add_class:"form-control" }}
-                                <div class="invalid-feedback">Please provide a valid description.</div>
+                                {% for error in form.description.errors %}
+                                    <div class="text-danger small">{{ error }}</div>
+                                {% endfor %}
                             </div>
                         </div>
+                        <!-- Step 2 -->
                         <div class="form-step" style="display: none;">
                             <div class="mb-3">
                                 {{ form.date.label_tag }}
                                 {{ form.date|add_class:"form-control" }}
-                                <div class="invalid-feedback">Please provide a valid date.</div>
+                                {% for error in form.date.errors %}
+                                    <div class="text-danger small">{{ error }}</div>
+                                {% endfor %}
                             </div>
                             <div class="mb-3">
                                 {{ form.time.label_tag }}
                                 {{ form.time|add_class:"form-control" }}
-                                <div class="invalid-feedback">Please provide a valid time.</div>
+                                {% for error in form.time.errors %}
+                                    <div class="text-danger small">{{ error }}</div>
+                                {% endfor %}
                             </div>
                         </div>
+                        <!-- Step 3 -->
                         <div class="form-step" style="display: none;">
                             <div class="mb-3">
                                 {{ form.location.label_tag }}
                                 {{ form.location|add_class:"form-control" }}
-                                <div class="invalid-feedback">Please provide a valid location.</div>
-                            </div>
-                            <div class="mb-3">
-                                {{ form.capacity.label_tag }}
-                                {{ form.capacity|add_class:"form-control" }}
-                                <div class="invalid-feedback">Please provide a valid capacity.</div>
+                                {% for error in form.location.errors %}
+                                    <div class="text-danger small">{{ error }}</div>
+                                {% endfor %}
                             </div>
                         </div>
+                        <!-- Step 4 -->
                         <div class="form-step" style="display: none;">
                             <div class="mb-3">
                                 {{ form.image.label_tag }}
                                 {{ form.image|add_class:"form-control" }}
-                                <div class="invalid-feedback">Please provide a valid image.</div>
+                                {% for error in form.image.errors %}
+                                    <div class="text-danger small">{{ error }}</div>
+                                {% endfor %}
                             </div>
                             <div class="mb-3">
                                 {{ form.video.label_tag }}
                                 {{ form.video|add_class:"form-control" }}
-                                <div class="invalid-feedback">Please provide a valid video.</div>
+                                {% for error in form.video.errors %}
+                                    <div class="text-danger small">{{ error }}</div>
+                                {% endfor %}
                             </div>
                         </div>
                         <div class="d-flex justify-content-between mt-4">
@@ -115,12 +128,33 @@
         submitBtn.style.display = step === formSteps.length - 1 ? 'block' : 'none';
     }
 
-    function nextStep() {
+    function validateCurrentStep() {
+    let isValid = true;
+    const currentFields = formSteps[currentStep].querySelectorAll('.form-control');
+
+    currentFields.forEach(field => {
+        if (!field.checkValidity()) {
+            isValid = false;
+            field.classList.add('is-invalid');
+        } else {
+            field.classList.remove('is-invalid');
+        }
+    });
+
+    return isValid;
+}
+
+function nextStep() {
+    if (validateCurrentStep()) {
         if (currentStep < formSteps.length - 1) {
             currentStep++;
             showStep(currentStep);
         }
+    } else {
+        alert('Please provide the necessary items before moving to the next step.');
     }
+}
+
 
     function prevStep() {
         if (currentStep > 0) {
@@ -131,6 +165,42 @@
 
     document.addEventListener('DOMContentLoaded', () => {
         showStep(currentStep);
+    });
+
+    // JavaScript for client-side validation
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            const form = document.getElementById('create-event-form');
+            form.addEventListener('submit', function(event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        }, false);
+    })();
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const imageInput = document.querySelector('input[name="image"]');
+        const videoInput = document.querySelector('input[name="video"]');
+
+        imageInput.addEventListener('change', function() {
+            if (imageInput.files.length > 0) {
+                videoInput.disabled = true;
+            } else {
+                videoInput.disabled = false;
+            }
+        });
+
+        videoInput.addEventListener('change', function() {
+            if (videoInput.files.length > 0) {
+                imageInput.disabled = true;
+            } else {
+                imageInput.disabled = false;
+            }
+        });
     });
 </script>
 {% endblock %}

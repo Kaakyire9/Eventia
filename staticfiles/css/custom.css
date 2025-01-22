@@ -368,3 +368,4 @@ h2, h3 {
 .form-control.is-invalid ~ .invalid-feedback {
     display: block;
 }
+
