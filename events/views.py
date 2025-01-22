@@ -79,8 +79,11 @@ def update_event(request, pk):
 @login_required
 def delete_event(request, pk):
     event = get_object_or_404(Event, pk=pk)
+    if request.user != event.organizer:
+        return HttpResponseForbidden("You don't have permission to delete this event.")
     if request.method == 'POST':
         event.delete()
+        messages.success(request, "Event deleted successfully.")
         return redirect('event_list')
     return render(request, 'events/delete_event.html', {'event': event})
 

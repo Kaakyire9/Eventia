@@ -7,13 +7,6 @@ Event Details
 
 {% block content %}
 <div class="container mt-5">
-    {% if messages %}
-        <div class="alert alert-success">
-            {% for message in messages %}
-                <p>{{ message }}</p>
-            {% endfor %}
-        </div>
-    {% endif %}
     <div class="row">
         <div class="col-md-8">
             {% if event.image %}
@@ -56,7 +49,7 @@ Event Details
                     <a href="{% url 'update_event' event.pk %}" class="btn btn-warning">Update</a>
                     <form id="delete-event-form" action="{% url 'delete_event' event.id %}" method="post" style="display:inline;">
                         {% csrf_token %}
-                        <button type="button" class="btn btn-danger" onclick="confirmDelete()">Delete Event</button>
+                        <a href="{% url 'delete_event' event.pk %}" class="btn btn-danger">Delete Event</a>
                     </form>
                 </div>
             {% endif %}
@@ -207,11 +200,5 @@ Event Details
             });
         });
     });
-
-    function confirmDelete() {
-        if (confirm("Are you sure you want to delete this event?")) {
-            document.getElementById('delete-event-form').submit();
-        }
-    }
 </script>
 {% endblock %}
