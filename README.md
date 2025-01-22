@@ -180,6 +180,36 @@ I chose to follow the MoSCoW Prioritization method for Eventia, identifying and 
 - **Could Haves**: these are the features that are a 'bonus' to the project, it would be nice to have them in this phase, but only if the most important issues have been completed first and time allows.
 - **Won't Haves**: the features or components that either no longer fit the project's brief or are of very low priority for this release. 
 
+### Sprints
+
+I divided the available time before project submission into sprints, aiming to complete the MVP for Eventia by January 22, 2025. This timeline was set considering the project's complexity and my goal to have the core functionalities implemented well before the final submission date of January 28, 2025.
+
+As this is my first project using database schemas and Django, I anticipated potential challenges and allocated extra time for troubleshooting and learning. The project commenced on January 9, 2025, at 8 AM, giving me approximately three weeks to develop, test, and refine the platform.
+
+I organized my work into three main categories:
+- Dev (Developer) Tasks
+- User Stories
+- Testing Tasks
+
+These were converted into issues and fully labeled on my Github Projects Board. Adding comments to issues proved invaluable, allowing me to quickly record information, sources, and fixes for later reference in my README.
+
+My sprints represent general timeframes of focus on specific areas. Given the nature of balancing project work with other commitments, some sprint timeframes overlapped as I worked on the project during every available moment.
+
+Despite being my first experience with Django and database schemas, I've made significant progress. The learning curve has been steep, but rewarding. I've encountered and overcome various challenges, particularly in setting up the database and implementing complex features like the event management system.
+
+As of today, January 22, 2025, I'm pleased to report that the project is on track. The core functionalities are in place, and I'm now focusing on refining the user interface and conducting thorough testing. This leaves me with a comfortable buffer before the final submission date to address any unforeseen issues and potentially add extra features if time permits.
+This sprint-based approach has not only helped me manage the project effectively but has also deepened my understanding of Agile methodologies in practice.
+
+|Sprint No.|	Sprint Content|	Start/Finish Dates|
+|----------|----------------|-------------------|
+| #1 |	Project Setup and Basic Models|	Jan 9, 2025 - Jan 12, 2025|
+| #2 |	User Authentication and Profiles|	Jan 13, 2025 - Jan 15, 2025|
+| #3 |	Event Creation and Management|	Jan 16, 2025 - Jan 18, 2025|
+|#4|	Event Detail Page and Interactions|	Jan 19, 2025 - Jan 21, 2025|
+|#5|	Comments and Likes Functionality|	Jan 22, 2025 - Jan 24, 2025|
+|#6|	Attendance Request and Approval System|	Jan 25, 2025 - Jan 26, 2025|
+|#7|	Final Testing and Bug Fixes|	Jan 27, 2025 - Jan 28, 2025|
+
 
 
 
