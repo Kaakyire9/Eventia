@@ -423,3 +423,15 @@ h2 {
     object-fit: cover; /* Ensure the media covers the area without distortion */
 }
 
+#comment-list .card {
+    margin-bottom: 15px;
+}
+
+#add-comment-form {
+    margin-top: 20px;
+}
+
+#comment-toggle {
+    margin-top: 20px;
+}
+
