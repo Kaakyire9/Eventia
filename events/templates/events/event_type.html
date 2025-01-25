@@ -1,0 +1,71 @@
+<!-- filepath: /workspace/Eventia/events/templates/events/subject_type.html -->
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Type by Events {% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Type by Events </h2>
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <form method="get" id="sort-form" class="sort-form">
+                <div class="form-group">
+                    <label for="sort_by">Sort by:</label>
+                    <select name="sort_by" id="sort_by" class="form-control" onchange="document.getElementById('sort-form').submit();">
+                        <option value="date_desc" {% if sort_by == 'date_desc' %}selected{% endif %}>Date (Newest First)</option>
+                        <option value="date_asc" {% if sort_by == 'date_asc' %}selected{% endif %}>Date (Oldest First)</option>
+                        <option value="title_asc" {% if sort_by == 'title_asc' %}selected{% endif %}>Title (A-Z)</option>
+                        <option value="title_desc" {% if sort_by == 'title_desc' %}selected{% endif %}>Title (Z-A)</option>
+                        <option value="popularity" {% if sort_by == 'popularity' %}selected{% endif %}>Popularity (Most Liked)</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        {% for event in events %}
+            <div class="col-md-4 mb-4">
+                <div class="event-card">
+                    {% if event.image %}
+                        <img src="{{ event.image.url }}" class="card-img-top" alt="{{ event.title }}">
+                    {% elif event.video %}
+                        <video controls class="card-img-top">
+                            <source src="{{ event.video.url }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ event.title }}</h5>
+                        <p class="card-text">{{ event.description|truncatewords:20|safe }}</p>
+                        <p class="card-text"><small class="text-muted event-datetime">{{ event.date }} - {{ event.time }}</small></p>
+                        <p class="card-text">
+                            <i class="fas fa-thumbs-up"></i> {{ event.likes.count }} Likes
+                            <i class="fas fa-comment"></i> {{ event.comments.count }} Comments
+                        </p>
+                        <p><i class="fas fa-users"></i> Attendees: {{ event.attendees_count }}</p>
+                        <a href="{% url 'event_detail' event.pk %}" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1&sort_by={{ sort_by }}" class="page-link">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}&sort_by={{ sort_by }}" class="page-link">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}&sort_by={{ sort_by }}" class="page-link">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}&sort_by={{ sort_by }}" class="page-link">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+{% endblock %}

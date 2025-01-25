@@ -185,4 +185,8 @@ def approve_attendance(request, attendee_id):
         messages.success(request, 'Attendance request has been approved.')
     return redirect('event_detail', pk=attendee.event.id)
 
+def events_by_type(request, event_type):
+    events = Event.objects.filter(type=event_type)
+    return render(request, f'events/{event_type}_type.html', {'events': events})
+
 

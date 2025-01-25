@@ -28,6 +28,14 @@
                                 {% endfor %}
                             </div>
                             <div class="mb-3">
+                                {{ form.type.label_tag }}
+                                {{ form.type|add_class:"form-control" }}
+                                {% for error in form.type.errors %}
+                                    <div class="text-danger small">{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                            <div id="type-note" class="type-note mb-3"></div>
+                            <div class="mb-3">
                                 {{ form.description.label_tag }}
                                 {{ form.description|add_class:"form-control" }}
                                 {% for error in form.description.errors %}
@@ -201,6 +209,28 @@ function nextStep() {
                 imageInput.disabled = false;
             }
         });
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const typeField = document.querySelector('#id_type');
+        const typeNote = document.querySelector('#type-note');
+
+        const typeDescriptions = {
+            'subject': 'Business, Science, Environment & Sustainability, Arts, Technology, Education',
+            'type': 'Performance, Workshop, Seminar, Conference, Networking, Social gathering',
+            'audience': 'Students, Professionals, Entrepreneurs, Academic researchers, Community members, Industry specialists',
+            'purpose': 'Educational, Networking, Fundraising, Professional development, Entertainment, Community engagement',
+            'tags': 'Keywords related to specific topics, Niche interest areas, Specific skills or themes, Detailed subject matter descriptors',
+            'experience': 'Virtual events, In-person events, Hybrid events, Interactive workshops, Lecture-style presentations, Hands-on training sessions'
+        };
+
+        function updateTypeNote() {
+            const selectedType = typeField.value;
+            typeNote.textContent = typeDescriptions[selectedType] || '';
+        }
+
+        typeField.addEventListener('change', updateTypeNote);
+        updateTypeNote(); // Initial call to set the note based on the default value
     });
 </script>
 {% endblock %}

@@ -33,6 +33,12 @@ h2 {
                 0 0 35px rgba(255, 20, 147, 0.5); /* Pink glow */
 }
 
-.event-datetime {
+.card-date {
     color: #ebba0a; /* Gold */
+    font-weight: bold;
+}
+
+.dark-theme #type-note {
+    background-color: #343a40; /* Dark background */
+    color: #ebba0a; /* Light text */
 }

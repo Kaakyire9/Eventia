@@ -37,3 +37,8 @@ h2 {
     color: #ebba0a; /* Gold */
     font-weight: bold;
 }
+
+.dark-theme #type-note {
+    background-color: #343a40; /* Dark background */
+    color: #ebba0a; /* Light text */
+}

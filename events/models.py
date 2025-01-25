@@ -14,6 +14,15 @@ class Notification(models.Model):
         return f"Notification for {self.user} - {'Read' if self.is_read else 'Unread'}"
 
 class Event(models.Model):
+    EVENT_TYPES = [
+        ('subject', 'By Subject'),
+        ('type', 'By Event Type'),
+        ('audience', 'By Audience'),
+        ('purpose', 'By Purpose'),
+        ('tags', 'By Tags'),
+        ('experience', 'By Experience Type'),
+    ]
+
     title = models.CharField(max_length=200)
     description = models.TextField()
     date = models.DateField()
@@ -23,7 +32,7 @@ class Event(models.Model):
     video = models.FileField(upload_to='events/videos/', null=True, blank=True)
     organizer = models.ForeignKey(User, on_delete=models.CASCADE, related_name="created_events")
     likes = models.ManyToManyField(User, related_name='liked_events', through='Like')
-    is_canceled = models.BooleanField(default=False)  # Add this field back with a default value
+    type = models.CharField(max_length=20, choices=EVENT_TYPES, default='subject')  # Add this field
 
     def __str__(self):
         return self.title

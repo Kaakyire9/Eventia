@@ -434,3 +434,10 @@ h2 {
     object-fit: cover; /* Ensure the media covers the area without distortion */
 }
 
+body #type-note {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f8f9fa; /* Light background */
+    color: #db470d; /* Dark text */
+    margin-top: 10px;
+}
