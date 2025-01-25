@@ -1,0 +1,59 @@
+<!-- filepath: /workspace/Eventia/about/templates/about/contact.html -->
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Contact Us - Eventia{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6">
+            <h1 class="mb-4">Contact Us</h1>
+            <p class="lead">We'd love to hear from you! Whether you have a question about Eventia, need assistance, or want to provide feedback, please don't hesitate to reach out.</p>
+            
+            <form id="contact-form" method="POST" action="{% url 'contact' %}">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="subject" class="form-label">Subject</label>
+                    <input type="text" class="form-control" id="subject" name="subject" required>
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </div>
+        <div class="col-lg-6 text-center">
+            <h2 class="mb-4">Get in Touch</h2>
+            <ul class="list-unstyled">
+                <li class="mb-3">
+                    <i class="fas fa-envelope mr-2"></i> Email: support@eventia.com
+                </li>
+                <li class="mb-3">
+                    <i class="fas fa-phone mr-2"></i> Phone: +1 (555) 123-4567
+                </li>
+                <li class="mb-3">
+                    <i class="fas fa-map-marker-alt mr-2"></i> Address: 123 Event Street, Dublin, Ireland
+                </li>
+            </ul>
+            <h3 class="mt-5 mb-4">Connect With Us</h3>
+            <div class="social-icons">
+                <a href="#" class="btn btn-outline-primary mr-2"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="btn btn-outline-info mr-2"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="btn btn-outline-danger mr-2"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="btn btn-outline-secondary"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

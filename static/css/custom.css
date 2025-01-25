@@ -186,7 +186,7 @@ header {
 
 
 .footer {
-    margin-top: auto;
+    margin-top: 40px; /* Adjust the value as needed */
     background: linear-gradient(135deg, #333333 50%, #555555 50%);
     color: white;
     padding: 20px 0;

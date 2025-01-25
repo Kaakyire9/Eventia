@@ -1,0 +1,32 @@
+<!-- filepath: /workspace/Eventia/about/templates/about/about.html -->
+{% extends "base.html" %}
+
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>About Eventia</h1>
+    <p>Eventia is a comprehensive event management platform designed to simplify the process of organizing and attending events. Developed as a Full Stack Individual Capstone Project at Code Institute, Eventia aims to revolutionize the way people connect through shared experiences.</p>
+    
+    <h2>Our Mission</h2>
+    <p>At Eventia, we believe in the power of bringing people together. Our mission is to create a user-friendly platform that empowers event organizers and attendees alike, fostering community engagement and memorable experiences.</p>
+    
+    <h2>Key Features</h2>
+    <ul>
+        <li><strong>Intuitive Event Creation:</strong> Easily create and manage events with our user-friendly interface.</li>
+        <li><strong>Interactive Attendance:</strong> Request to attend events and manage attendee lists effortlessly.</li>
+        <li><strong>Social Engagement:</strong> Like, comment, and share events to build a vibrant community.</li>
+        <li><strong>Multimedia Support:</strong> Showcase your events with images and videos for a richer experience.</li>
+        <li><strong>Responsive Design:</strong> Enjoy a seamless experience across all devices.</li>
+    </ul>
+    
+    <h2>The Team</h2>
+    <p>Eventia is the brainchild of a passionate developer committed to creating innovative solutions. As a student at Code Institute, this project represents the culmination of acquired skills in full-stack development, from front-end design to back-end functionality.</p>
+    
+    <h2>Our Vision</h2>
+    <p>We envision Eventia as more than just an event management tool. It's a platform where connections are made, communities are strengthened, and unforgettable moments are created. As we continue to grow, we're committed to enhancing our features and expanding our reach to bring people together in meaningful ways.</p>
+    
+    <h2>Contact Us</h2>
+    <p>We value your feedback and suggestions. If you have any questions or would like to get in touch, please visit our <a href="{% url 'contact' %}">Contact</a> page.</p>
+</div>
+{% endblock %}
