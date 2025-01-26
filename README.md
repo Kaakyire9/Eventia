@@ -210,6 +210,36 @@ This sprint-based approach has not only helped me manage the project effectively
 |#6|	Attendance Request and Approval System|	Jan 25, 2025 - Jan 26, 2025|
 |#7|	Final Testing and Bug Fixes|	Jan 27, 2025 - Jan 28, 2025|
 
+## User Stories
+
+User stories and features recorded and managed on [GitHub Projects](<https://github.com/users/Kaakyire9/projects/9>)
+
+### Visitor User Stories
+| User Story | Priority |
+|------------------------------------------------------------------------------------------------------------------------|---------------|
+|As a **user**, I want to **view a paginated list of upcoming events**  so I can **decide which to attend**  | **MUST HAVE** |
+|As a **user**, I want a **visually appealing, responsive event page** that **works on all devices**| **SHOULD HAVE** |
+|As a **user**, I want a **navigation bar** so I can **easily access key features of the application** | **SHOULD HAVE** |
+
+### Epic - User Profile
+| User Story | Priority |
+|------------------------------------------------------------------------------------------------------------------------|---------------|
+|As a **user**, I want to **create an account and log in securely** so I can **manage my events and RSVPs** | **MUST HAVE** |
+|As a **registered user**,  I want to **update my profile information** So that I can **keep my details up to date** | **SHOULD HAVE** |
+|As a **user**, I want to **receive notifications about relevant changes to events I'm interested in**, so that I can **stay informed and up-to-date** | **COULD HAVE** |
+|As an **organizer**, I want to **restrict unauthorized access** so that **only valid users can manage events** | **MUST HAVE** |
+
+### Epic - Events
+| User Story | Priority |
+|------------------------------------------------------------------------------------------------------------------------|---------------|
+
+
+
+
+
+
+
+
 
 
 
