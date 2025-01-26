@@ -63,10 +63,10 @@
 
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About Us</a>
+                        <a class="nav-link" href="{% url 'about'%}">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="{%url 'contact' %}">Contact</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_signup' %}">Login/Register</a>
