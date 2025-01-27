@@ -422,6 +422,33 @@ For users who are event organizers, the profile page displays a comprehensive li
 
 The profile page also includes a section showing events the user has RSVP'd to or is planning to attend. This feature helps users keep track of their upcoming engagements and provides quick access to event details. It enhances the user experience by centralizing all event-related information in one convenient location.
 
+### Authentication Pages
+
+![Eventia login page ](documentation/final_views/eventia_signin_page.png)
+
+*Eventia login page*
+
+The login page provides a secure entry point for registered users. It features a clean, user-friendly interface with fields for username/email and password. The page includes error handling for invalid login attempts and may offer options like "Remember me" for user convenience.
+
+![Eventia Sign-Up page ](documentation/final_views/eventia_sign_up_form.png)
+
+*Eventia Sign_up page*
+
+New users can create an account through the registration page. This page includes fields for essential information such as username, email, and password. It implements form validation to ensure data integrity and may include features like password strength indicators.
+
+### Settings Page 
+
+![Eventia password reset ](documentation/final_views/eventia_pass_reset.png)
+
+*Eventia Password reset functionality*
+
+For users who have forgotten their passwords, Eventia offers a password reset feature. This typically involves a multi-step process: requesting a reset, receiving an email with instructions, and setting a new password. This functionality enhances security and user account management.
+
+![Eventia theme selection ](documentation/final_views/eventia_theme_selection.png)
+
+*Eventia theme Selection*
+
+Eventia offers users a flexible theme selection feature with three modes: Auto, Light, and Dark. This functionality enhances user experience by allowing personalized visual preferences. The auto mode adapts to the user's system settings, while light and dark modes provide manual control over the application's color scheme.
 
 ## Citations:
 [1] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/40879804/91578d7d-dc67-46c1-9847-33ee283695c6/paste.txt
