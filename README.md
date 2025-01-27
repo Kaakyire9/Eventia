@@ -30,10 +30,8 @@ For Admin access with relevant sign-in information: [Eventia Admin](https://even
   - [User Stories](#user-stories)
     - [Visitor User Stories](#visitor-user-stories)
     - [Epic - User Profile](#epic---user-profile)
-    - [Epic - Articles](#epic---articles)
-    - [Epic - Booking](#epic---booking)
-    - [Epic - Photo Gallery](#epic---photo-gallery)
-    - [Epic - Visit Us/Reviews](#epic---visit-usreviews)
+    - [Epic - Events](#epic---events)
+    - [Epic - Development and Infrastructure](#epic---booking)
   - [Scope Plane](#scope-plane)
   - [Structural Plane](#structural-plane)
   - [Skeleton \& Surface Planes](#skeleton--surface-planes)
@@ -474,6 +472,80 @@ The footer of Eventia provides easy access to important information and external
 *Eventia Copyright Information*
 
 At the bottom of the footer, Eventia displays its copyright notice. This includes the copyright symbol, the current year, and the company name. For example: "© 2025 Eventia. All rights reserved." This information protects the platform's intellectual property and informs users about the ownership of the content.
+
+## Skeleton & Surface Planes
+
+### Wireframes
+
+
+### Database Schema - Entity Relationship Diagram for Eventia 
+
+![ERD Image](documentation/wireframes/eventia_ERD_diagram.png)  
+*Database Schema (ERD) for Eventia displaying relationships between feature components saved within the database*
+
+Eventia's ERD illustrates the interconnected nature of its core features and their relationship with the PostgreSQL database. The system leverages Django's User Model and Django AllAuth for robust user authentication, creating a unique user_id upon registration with username and email.
+
+Key Models and Relationships:
+
+1. User (Django's built-in User model)
+  - One-to-One relationship with UserProfile
+  - One-to-Many relationships with Event, Comment, Like, and Attendee
+
+2. Event
+  - Many-to-One relationship with User (organizer)
+  - One-to-Many relationships with Comment, Like, and Attendee
+
+3. UserProfile
+  - One-to-One relationship with User
+  - Stores additional user information
+
+4. Notification
+  - Many-to-One relationship with User
+
+5. Like
+  - Many-to-One relationships with User and Event
+  - Unique constraint on (user, event)
+
+6. Comment
+  - Many-to-One relationships with User and Event
+
+7. Attendee
+  - Many-to-One relationships with User and Event
+
+This structure allows users to create and manage events, interact through comments and likes, and manage their attendance. The use of CASCADE deletion ensures data integrity when a user is removed from the system.
+
+The Event model is central to the application, connecting users as organizers or attendees and facilitating social interactions through comments and likes. The UserProfile model extends the built-in User model, allowing for richer user data without modifying the core Django user system.
+
+This ERD provides a solid foundation for Eventia's current features and allows for future expansions, such as implementing a rating system for events or adding more complex user interactions.
+
+
+### Security
+
+Eventia implements several security measures to protect user data and ensure a safe experience for all participants. As an event management platform that allows users to create and join events, security is paramount. The following security features have been implemented:
+
+**Django AllAuth**
+
+Django AllAuth handles user registration and authentication, providing:
+- Secure user registration and login
+- Password hashing and storage
+- Authentication backends configuration
+- URL routing for authentication views
+
+**Defensive Design**
+
+Eventia incorporates defensive design principles to enhance user experience and security:
+- Input validation with clear error messages
+- Redirection of unauthenticated users to login page
+- Role-based access control for event management
+- Confirmation modals for critical actions like event deletion
+- Custom error pages with navigation options
+- Comprehensive testing and validation of all features
+
+**CSRF Protection**
+
+Cross-Site Request Forgery (CSRF) tokens are included in all forms to prevent unauthorized requests.
+
+## Feature Showcase 
 
 
 ## Citations:
