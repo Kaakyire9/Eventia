@@ -446,9 +446,35 @@ For users who have forgotten their passwords, Eventia offers a password reset fe
 
 ![Eventia theme selection ](documentation/final_views/eventia_theme_selection.png)
 
-*Eventia theme Selection*
+*Eventia Theme Selection*
 
 Eventia offers users a flexible theme selection feature with three modes: Auto, Light, and Dark. This functionality enhances user experience by allowing personalized visual preferences. The auto mode adapts to the user's system settings, while light and dark modes provide manual control over the application's color scheme.
+
+![Eventia About page ](documentation/final_views/eventia_about_page.png)
+
+*Eventia About page*
+
+The Eventia About page serves as a comprehensive introduction to the platform's mission and core values. It highlights the platform's purpose of connecting people through events, explaining how users can create, discover, and participate in various gatherings. The page provides insights into the platform's development, key features, and the vision behind creating a user-friendly event management solution.
+
+
+![Eventia Contact page ](documentation/final_views/eventia_contact_us_page.png)
+
+*Eventia Contact Us page*
+
+Eventia's Contact page offers multiple channels for user communication. It includes a contact form for direct inquiries, displaying fields for name, email, subject, and message. Additionally, the page provides alternative contact methods such as email address and potentially social media links. The design emphasizes accessibility and user-friendly communication, ensuring that users can easily reach out with questions, feedback, or support requests.
+
+![Eventia Contact page ](documentation/final_views/eventia_footer_links.png)
+
+*Eventia footer Links to About, Contact, and social media*
+
+The footer of Eventia provides easy access to important information and external resources. The "About" link directs users to a page detailing the platform's mission and history. The "Contact" link offers a way for users to reach out with questions or feedback. Social media icons link to Eventia's official profiles, allowing users to connect and stay updated on various platforms.
+
+![Eventia Contact page ](documentation/final_views/eventia_footer_copyright.png)
+
+*Eventia Copyright Information*
+
+At the bottom of the footer, Eventia displays its copyright notice. This typically includes the copyright symbol, the current year, and the company name. For example: "© 2025 Eventia. All rights reserved." This information protects the platform's intellectual property and informs users about the ownership of the content.
+
 
 ## Citations:
 [1] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/40879804/91578d7d-dc67-46c1-9847-33ee283695c6/paste.txt
