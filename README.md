@@ -291,13 +291,21 @@ The event type categories section provides users with a visual and intuitive way
 
 Below the Event Type Category, Eventia showcases a curated selection of upcoming events. This section highlights diverse event types to appeal to a wide audience. Each featured event is presented in an attractive card format, displaying key information such as the event title, date, time, the countdown days and a captivating image. This section serves to give visitors a quick overview of the exciting events available on the platform.
 
+![Eventia logo on the Navbar](documentation/final_views/eventia_navbar_logo.png)
 
+*Eventia Logo on the left side of the Navigation bar*
 
+The Eventia logo, prominently displayed in the top-left corner of the navigation bar, serves as a visual anchor for the brand. It's designed to be memorable and reflective of the platform's purpose, featuring a stylized representation of connection or celebration. The logo acts as a home button, allowing users to return to the main page from anywhere on the site.
 
+![Eventia Navbar links for Unauthenticated Users](documentation/final_views/eventia_navbar_links.png)
+*Eventia Navbar Links for Unauthenticated Users*
 
+The navigation bar provides easy access to key sections of the platform. The "Home" link returns users to the landing page, while "Events" directs them to a comprehensive list of upcoming gatherings. The "About Us" link visitors to a page that tell them what Eventia is about (its mission, vision, and values). The "Contact" Enables users to reach out for help, feedback, or inquiries about services. "Login/Register" options are clearly visible for new and returning users, ensuring quick access to personalized features.
 
+![Eventia Navbar links for Authenticated Users](documentation/final_views/eventia_profile_dropdown.png)
+*Eventia Navbar Links for Authenticated User*
 
-
+Once authenticated, users see their profile information in a dropdown menu, typically represented by their username or a profile icon. This dropdown provides quick access to personal settings, created events, and logout functionality, enhancing user experience by centralizing account-related actions in one convenient location. "Create Event" is a call-to-action for organizers, leading to the event creation form.
 
 
 
