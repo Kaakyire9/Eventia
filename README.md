@@ -276,6 +276,7 @@ The project's scope was carefully planned to balance the essential features requ
 
 Eventia is a comprehensive event management platform designed to connect organizers and attendees. The structural plan for Eventia encompasses several key components that work together to provide a seamless user experience. At its core, the platform features user authentication, event creation and management, RSVP functionality, and social interaction features. The structure is built around a responsive design that ensures accessibility across various devices, from desktops to mobile phones. Key pages include a dynamic home page, an events listing page with search and filter capabilities, detailed event pages, user profiles, and administrative interfaces for event organizers. This carefully planned structure allows for intuitive navigation and efficient event management, catering to the needs of both event creators and attendees.
 
+### Home page 
 ![Eventia Hero Section](documentation/final_views/eventia_hero_section.png)
 *Hero section with a call-to-action for Eventia*
 
@@ -290,6 +291,8 @@ The event type categories section provides users with a visual and intuitive way
 *Upcoming Events Section for Eventia*
 
 Below the Event Type Category, Eventia showcases a curated selection of upcoming events. This section highlights diverse event types to appeal to a wide audience. Each featured event is presented in an attractive card format, displaying key information such as the event title, date, time, the countdown days and a captivating image. This section serves to give visitors a quick overview of the exciting events available on the platform.
+
+### Navigation 
 
 ![Eventia logo on the Navbar](documentation/final_views/eventia_navbar_logo.png)
 
@@ -308,11 +311,14 @@ The navigation bar provides easy access to key sections of the platform. The "Ho
 
 Once authenticated, users see their profile information in a dropdown menu, typically represented by their username or a profile icon. This dropdown provides quick access to personal settings, created events, and logout functionality, enhancing user experience by centralizing account-related actions in one convenient location. "Create Event" is a call-to-action for organizers, leading to the event creation form.
 
-![Eventia Navbar links for Authenticated Users](documentation/final_views/eventia_event_list_page.png)
+### Event Page
+
+![Event list page ](documentation/final_views/eventia_event_list_page.png)
 
 *List of Upcoming events with pagination for Eventia* 
 
 Eventia's events page showcases a comprehensive list of upcoming events, organized chronologically. The pagination feature ensures smooth navigation through numerous events, displaying a manageable number per page. This approach prevents overwhelming users with too much information at once and improves page load times.
+
 
 ![Event card](documentation/final_views/eventia_event_card.png)
 
@@ -325,6 +331,8 @@ Each event is presented in an attractive card format, providing essential inform
 *Sort By Functionality on Eventia*
 
 To enhance user experience, Eventia incorporates robust sort by. Users can easily find events that match their interests or specific criteria. The "Sort by" feature on a Eventia allows users to rearrange or organize a list of event based on specific criteria This feature significantly improves the discoverability of events and helps users find relevant gatherings more efficiently.
+
+### Event Detail Page 
 
 ![Event information](documentation/final_views/eventia_event_info.png)
 
@@ -353,6 +361,10 @@ The RSVP feature is a key component of the event detail page. Authenticated user
 *Eventia event comments*
 
 To foster engagement and community interaction, Eventia includes a comments section on each event detail page. This feature allows attendees and potential participants to ask questions, share excitement, or discuss event-related topics. Comments display the user's name and timestamp, promoting transparency and real-time conversation. Event organizers can also use this section to respond to queries and moderate discussions if necessary.
+
+### Create Event Page 
+
+
 
 
 ## Citations:
