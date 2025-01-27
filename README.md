@@ -364,8 +364,35 @@ To foster engagement and community interaction, Eventia includes a comments sect
 
 ### Create Event Page 
 
+![Eventia Event Creation Form ](documentation/final_views/eventia_event_creation_form.png)
 
+*Event form for creating event*
 
+The event creation form is a crucial component of Eventia, allowing organizers to input all necessary details for their events. This user-friendly interface guides users through the process of setting up an event, ensuring all required information is collected efficiently. The form is designed with clear labels and input fields, making it intuitive for users of all technical levels.
+
+![Eventia creation form with title, type and description fields ](documentation/final_views/eventia_title_type_address_form.png)
+
+*Eventia event creation form with title, type and description fields*
+
+- Title: A prominent field for the event's name, helping it stand out in listings.
+- Type: A dropdown or selection field to categorize the event (e.g., subject, Event, Audience).
+- Description: A text area for detailed information about the event, allowing rich formatting.
+
+![Eventia creation with date and time fields ](documentation/final_views/eventia_date_time_form.png)
+
+*Eventia event creation form with date and time fields*
+
+Date and Time: Separate fields or a datetime picker for precise scheduling
+
+![Eventia creation with location field ](documentation/final_views/eventia_location_form.png)
+
+*Eventia event creation form with location field*
+
+Location: An input field for the venue address or online event link.
+
+![Eventia creation with image and video field ](documentation/final_views/eventia_image_video_form.png)
+
+*Eventia event creation form with image and video  fields*
 
 ## Citations:
 [1] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/40879804/91578d7d-dc67-46c1-9847-33ee283695c6/paste.txt
