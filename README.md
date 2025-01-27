@@ -303,9 +303,29 @@ The Eventia logo, prominently displayed in the top-left corner of the navigation
 The navigation bar provides easy access to key sections of the platform. The "Home" link returns users to the landing page, while "Events" directs them to a comprehensive list of upcoming gatherings. The "About Us" link visitors to a page that tell them what Eventia is about (its mission, vision, and values). The "Contact" Enables users to reach out for help, feedback, or inquiries about services. "Login/Register" options are clearly visible for new and returning users, ensuring quick access to personalized features.
 
 ![Eventia Navbar links for Authenticated Users](documentation/final_views/eventia_profile_dropdown.png)
+
 *Eventia Navbar Links for Authenticated User*
 
 Once authenticated, users see their profile information in a dropdown menu, typically represented by their username or a profile icon. This dropdown provides quick access to personal settings, created events, and logout functionality, enhancing user experience by centralizing account-related actions in one convenient location. "Create Event" is a call-to-action for organizers, leading to the event creation form.
+
+![Eventia Navbar links for Authenticated Users](documentation/final_views/eventia_event_list_page.png)
+
+*List of Upcoming events with pagination for Eventia* 
+
+Eventia's events page showcases a comprehensive list of upcoming events, organized chronologically. The pagination feature ensures smooth navigation through numerous events, displaying a manageable number per page. This approach prevents overwhelming users with too much information at once and improves page load times.
+
+![Event card](documentation/final_views/eventia_event_card.png)
+
+*Event cards showing title, date, time, comments, likes and Attendees*
+
+Each event is presented in an attractive card format, providing essential information at a glance. The cards display the event title, date, time, comments, likes and attendees allowing users to quickly assess their interest and availability. This concise presentation helps users efficiently browse through multiple events.
+
+![Sort By functionality](documentation/final_views/eventia_search&filter.png)
+
+*Sort By Functionality on Eventia*
+
+To enhance user experience, Eventia incorporates robust sort by. Users can easily find events that match their interests or specific criteria. The "Sort by" feature on a Eventia allows users to rearrange or organize a list of event based on specific criteria This feature significantly improves the discoverability of events and helps users find relevant gatherings more efficiently.
+
 
 
 
