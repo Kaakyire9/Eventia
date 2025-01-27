@@ -294,7 +294,7 @@ Below the Event Type Category, Eventia showcases a curated selection of upcoming
 
 ### Navigation 
 
-![Eventia logo on the Navbar](documentation/final_views/eventia_navbar_logo.png)
+![Eventia logo on the Navbar](documentation/final_views/eventia_navbar_logo.png) ![Eventia logo on the Navbar](documentation/final_views/eventia_icon.png)
 
 *Eventia Logo on the left side of the Navigation bar*
 
