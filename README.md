@@ -394,6 +394,35 @@ Location: An input field for the venue address or online event link.
 
 *Eventia event creation form with image and video  fields*
 
+Image/Video upload: File upload functionality for visual content to make the event listing more appealing
+
+### User Profile Page
+
+![Eventia User's profile ](documentation/final_views/eventia_user_profile.png)
+
+*Eventia User's profile*
+
+The user profile page prominently showcases essential information about the account holder. This typically includes the user's name, profile picture, and other relevant details such as bio or contact information. The layout is designed to be clean and easily readable, providing a quick overview of the user's identity on the platform.
+
+![Eventia User's profile edit form ](documentation/final_views/eventia_edit_profile_form.png)
+
+*Eventia User's profile edit form*
+
+Eventia offers users the flexibility to update their profile information as needed. An easily accessible "Edit Profile" button or link allows users to modify their details, ensuring their information remains current. This feature enhances user engagement and allows for personalization of the user experience.
+
+![Eventia list of created events](documentation/final_views/eventia_list_of_created_events.png)
+
+*Eventia list of created events by a user*
+
+For users who are event organizers, the profile page displays a comprehensive list of events they have created. This section provides a quick overview of the user's event management activities, allowing easy access to edit or manage these events. It serves as a central hub for organizers to track their event portfolio.
+
+![List of events the user is attending](documentation/final_views/eventia_list_of_attending-events.png)
+
+*List of events the user is attending*
+
+The profile page also includes a section showing events the user has RSVP'd to or is planning to attend. This feature helps users keep track of their upcoming engagements and provides quick access to event details. It enhances the user experience by centralizing all event-related information in one convenient location.
+
+
 ## Citations:
 [1] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/40879804/91578d7d-dc67-46c1-9847-33ee283695c6/paste.txt
 
