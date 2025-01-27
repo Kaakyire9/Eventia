@@ -326,7 +326,33 @@ Each event is presented in an attractive card format, providing essential inform
 
 To enhance user experience, Eventia incorporates robust sort by. Users can easily find events that match their interests or specific criteria. The "Sort by" feature on a Eventia allows users to rearrange or organize a list of event based on specific criteria This feature significantly improves the discoverability of events and helps users find relevant gatherings more efficiently.
 
+![Event information](documentation/final_views/eventia_event_info.png)
 
+*Event information displaying title, description, date, time, location, organizser and number of attendees*
+
+The event detail page prominently displays essential information about each event. The title is typically presented in a large, eye-catching font, followed by a detailed description that provides context and entices potential attendees. The date, time, and location are clearly visible, often near the top of the page, allowing users to quickly determine if they can attend. This layout ensures that visitors can easily access all crucial event details at a glance. The organizer is who created the event is also shown including number of attendees. 
+
+
+![Event image display ](documentation/final_views/eventia_event_image.png)
+
+*The Event image/Video display with likes, share and comments icons*
+
+Eventia supports multimedia content to enhance event presentations. The platform allows organizers to upload images or videos that showcase the event's atmosphere or provide additional information. These visual elements are displayed prominently on the event detail page, helping to capture the audience's attention and convey the event's essence more effectively. 
+
+
+![Request to attend Button ](documentation/final_views/eventia_request_to_attend.png)  ![Event request notification](documentation/final_views/eventia_request_note.png) 
+
+![Request submitted disable button](documentation/final_views/eventia_request_sumbitted.png) ![Approved Request disable button](documentation/final_views/eventia_approved_request.png)
+
+*Request to attend button, Request notification, submitted disable button and approved disable button*
+
+The RSVP feature is a key component of the event detail page. Authenticated users can easily indicate their intention to attend an event with a clearly visible RSVP button. Upon submission, users receive confirmation of their RSVP status. This functionality allows organizers to track attendance and helps users commit to events they're interested in.
+
+![Event comments](documentation/final_views/eventia_event_comments.png)
+
+*Eventia event comments*
+
+To foster engagement and community interaction, Eventia includes a comments section on each event detail page. This feature allows attendees and potential participants to ask questions, share excitement, or discuss event-related topics. Comments display the user's name and timestamp, promoting transparency and real-time conversation. Event organizers can also use this section to respond to queries and moderate discussions if necessary.
 
 
 ## Citations:
