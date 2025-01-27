@@ -473,7 +473,7 @@ The footer of Eventia provides easy access to important information and external
 
 *Eventia Copyright Information*
 
-At the bottom of the footer, Eventia displays its copyright notice. This typically includes the copyright symbol, the current year, and the company name. For example: "© 2025 Eventia. All rights reserved." This information protects the platform's intellectual property and informs users about the ownership of the content.
+At the bottom of the footer, Eventia displays its copyright notice. This includes the copyright symbol, the current year, and the company name. For example: "© 2025 Eventia. All rights reserved." This information protects the platform's intellectual property and informs users about the ownership of the content.
 
 
 ## Citations:
