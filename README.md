@@ -545,8 +545,31 @@ Eventia incorporates defensive design principles to enhance user experience and 
 
 Cross-Site Request Forgery (CSRF) tokens are included in all forms to prevent unauthorized requests.
 
-## Feature Showcase 
+## Features and User Access
 
+Eventia balances public access with user-specific features:
+
+| Feature   | Unauthenticated User | Authenticated User |
+|-----------|-------------------|-----------------|
+|Home Page	|       Visible	    |     Visible|
+|Event Listing|	Visible|	Visible with RSVP option|
+|Event Details|	Visible|	Visible with full interaction|
+|Create Event|	Not available|	Available|
+|User Profile|	Not available|	Visible and editable|
+|Comments	|Visible|	Can post and manage|
+
+## CRUD Functionality
+
+Eventia provides comprehensive CRUD operations for its core features:
+
+| Feature   | create |  Read   	|   Update |	Delete|
+|-----------|--------|----------|----------|--------|
+|Events|	Yes (Organizers)|	Yes (All)|	Yes (Organizers)|	Yes (Organizers)|
+|User Profiles|	Auto-created on| registration	Yes|	Yes	Admin only|
+|Comments|	Yes|	Yes|	Yes|	Yes (Own comments)|
+|RSVPs|	Yes|	Yes|	No|	Yes|
+
+These features ensure that Eventia provides a secure, user-friendly platform for event management while maintaining data integrity and user privacy.
 
 ## Citations:
 [1] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/40879804/91578d7d-dc67-46c1-9847-33ee283695c6/paste.txt
