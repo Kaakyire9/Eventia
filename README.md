@@ -51,7 +51,7 @@ For Admin access with relevant sign-in information: [Eventia Admin](https://even
   - [Connecting to GitHub](#connecting-to-github)
   - [Django Project Setup](#django-project-setup)
   - [Cloudinary API](#cloudinary-api)
-  - [Elephant SQL](#elephant-sql)
+  - [Neon SQL](#Neon-sql)
   - [Heroku deployment](#heroku-deployment)
   - [Clone project](#clone-project)
   - [Fork Project](#fork-project)
@@ -571,15 +571,279 @@ Eventia provides comprehensive CRUD operations for its core features:
 
 These features ensure that Eventia provides a secure, user-friendly platform for event management while maintaining data integrity and user privacy.
 
-## Citations:
-[1] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/40879804/91578d7d-dc67-46c1-9847-33ee283695c6/paste.txt
+## Future Features
 
-[2] https://www.cvent.com/uk
+- **Event Analytics Dashboard**: Implement a comprehensive analytics dashboard for event organizers to track attendance, engagement, and other key metrics.
+- **Social Media Integration**: Allow users to log in and share events via popular social media platforms, streamlining the registration process and increasing event visibility.
+- **Advanced Scheduling System**: Develop a more sophisticated scheduling system using Django Agenda/Scheduler to display unavailable dates and times, enhancing the user experience for event creation and RSVP.
+- **Mobile Application**: Create a downloadable app for quicker access to event management and RSVP functions, catering to regular users and expanding the platform's reach.
+- **In-App Messaging**: Implement a direct messaging feature to facilitate communication between event organizers and attendees, fostering community engagement.
+- **Virtual Event Integration**: Add support for virtual events, including video conferencing integration and online ticketing systems.
+- **Ticketing and Payment System**: Introduce a secure payment gateway for paid events, allowing organizers to sell tickets directly through the platform.
+- **Localization and Multi-language Support**: Expand the platform's accessibility by adding support for multiple languages and region-specific event information.
 
-[3] https://www.eventbrite.co.uk
+These enhancements aim to improve user experience, increase engagement, and expand Eventia's functionality as an comprehensive event management platform.
 
-[4] https://color.adobe.com/
+# Technologies & Languages Used
 
-[5] https://fonts.google.com/specimen/Smooch+Sans
+- HTML
+- CSS
+- JavaScript
+- Python
+- PostgreSQL for database management.
+- [Git](https://git-scm.com/) used for version control.
+- [Github](https://www.github.com) used for online storage of codebase and Projects tool.
+- [CodeAnywhere](https://app.codeanywhere.com) as an online, cloud-based IDE for development.
+- [Figma](https://www.figma.com) for project design planning and wireframe creation.
+- [Adobe Color](https://color.adobe.com) for colour theme creation and accessibility checkers.
+- [Django](https://www.djangoproject.com/) was used as the Python framework for the site.
+- [Cloudinary](https://cloudinary.com/) was used for cloud media storage of user uploaded images.
+- [Heroku](https://www.heroku.com) was used to host the FreeFido application.
+- [WAVE](https://wave.webaim.org/) to evaluate the accessibility of the site.
+- [Procreate](https://procreate.com/) for image creation and editing.
 
-[6] https://github.com/users/Kaakyire9/projects/9/views/1
+This list encompasses the core technologies and tools used in developing the Eventia platform, covering everything from front-end languages to back-end frameworks and deployment services.
+
+## Libraries & Frameworks
+
+- Bootstrap v5.2.3
+- Django v3.2.19
+- Django AllAuth v0.54.0
+- Django Crispy Forms v2.0
+- Crispy Bootstrap5 v0.7
+- Django Resized v1.0.2
+- Django RichTextField v1.6.1
+- Django Summernote v0.8.2
+- Python Slugify v8.0.1
+- Pillow v9.5
+  
+Further information is available in the [requirements.txt file](requirements.txt)
+
+## Tools & Programs
+
+- [EZGif](<https://ezgif.com/>) for gif conversion.
+- [Convertio](https://convertio.co/) for file conversion to PNG, WEBP.
+- [Tiny Png](https://tinypng.com/) for file size reduction.
+- [Lucidchart](https://www.lucidchart.com/pages) for ERD (entity relationship diagram) creation.
+- [Trello](https://www.trello.com) for intial project agile planning.
+- [Perplexity AI](https://www.perplexity.ai/) for breaking down Python concepts and Django documentation into more understandable chunks.
+- [Pattern Monster](https://pattern.monster/) for the hero image pattern SVG.
+- [Favicon](https://favicon.io/) for converting an icon into favicon.
+- [LogoAI](https://www.logoai.com/) for design inspiration using my font and colour choices.
+
+
+- For all testing, please refer to the [TESTING.md](TESTING.md) file.
+
+# Deployment
+  
+## Connecting to GitHub  
+
+To begin this project from scratch, you must first create a new GitHub repository using the [Code Institute's Template](https://github.com/Code-Institute-Org/ci-full-template). This template provides the relevant tools to get you started. To use this template:
+
+1. Log in to [GitHub](https://github.com/) or create a new account.
+2. Navigate to the above CI Full Template.
+3. Click '**Use this template**' -> '**Create a new repository**'.
+4. Choose a new repository name and click '**Create repository from template**'.
+5. In your new repository space, click the purple CodeAnywhere (if this is your IDE of choice) button to generate a new workspace.
+
+## Django Project Setup
+
+1. Install Django and supporting libraries: 
+   
+- ```pip3 install 'django<4' gunicorn```
+- ```pip3 install dj_database_url psycopg2```
+- ```pip3 install dj3-cloudinary-storage```  
+  
+2. Once you have installed any relevant dependencies or libraries, such as the ones listed above, it is important to create a **requirements.txt** file and add all installed libraries to it with the ```pip3 freeze --local > requirements.txt``` command in the terminal.  
+3. Create a new Django project in the terminal ```django-admin startproject ems .```
+4. Create a new app eg. ```python3 mangage.py startapp events```
+5. Add this to list of **INSTALLED_APPS** in **settings.py** - 'booking',
+6. Create a superuser for the project to allow Admin access and enter credentials: ```python3 manage.py createsuperuser```
+7. Migrate the changes with commands: ```python3 manage.py migrate```
+8. An **env.py** file must be created to store all protected data such as the **DATABASE_URL** and **SECRET_KEY**. These may be called upon in your project's **settings.py** file along with your Database configurations. The **env.py** file must be added to your **gitignore** file so that your important, protected information is not pushed to public viewing on GitHub. For adding to **env.py**:
+
+- ```import os```
+- ```os.environ["DATABASE_URL"]="<copiedURLfrom postgresql://neondb_owner>"```
+- ```os.environ["SECRET_KEY"]="my_super^secret@key"```
+  
+For adding to **settings.py**:
+
+- ```import os```
+- ```import dj_database_url```
+- ```if os.path.exists("env.py"):```
+- ```import env```
+- ```SECRET_KEY = os.environ.get('SECRET_KEY')``` (actual key hidden within env.py)  
+
+9. Replace **DATABASES** with:
+
+```
+DATABASES = {
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+  }
+```
+
+10. Set up the templates directory in **settings.py**:
+- Under ``BASE_DIR`` enter ``TEMPLATES_DIR = os.path.join(BASE_DIR, ‘templates’)``
+- Update ``TEMPLATES = 'DIRS': [TEMPLATES_DIR]`` with:
+
+```
+os.path.join(BASE_DIR, 'templates'),
+os.path.join(BASE_DIR, 'templates', 'allauth')
+```
+
+- Create the media, static and templates directories in top level of project file in IDE workspace.
+
+11. A **Procfile** must be created within the project repo for Heroku deployment with the following placed within it: ```web: gunicorn ems.wsgi```
+12. Make the necessary migrations again.
+
+## Cloudinary API 
+
+Cloudinary provides a cloud hosting solution for media storage. All users uploaded images in the FreeFid project are hosted here.
+
+Set up a new account at [Cloudinary](https://cloudinary.com/) and add your Cloudinary API environment variable to your **env.py** and Heroku Config Vars.
+In your project workspace: 
+
+- Add Cloudinary libraries to INSTALLED_APPS in settings.py 
+- In the order: 
+```
+   'cloudinary_storage',  
+   'django.contrib.staticfiles',  
+   'cloudinary',
+```
+- Add to **env.py** and link up with **settings.py**: ```os.environ["CLOUDINARY_URL"]="cloudinary://...."``` 
+- Set Cloudinary as storage for media and static files in settings.py:
+- ```STATIC_URL = '/static/'```
+```
+  STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'  
+  STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]  
+  STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')‌  
+  MEDIA_URL = '/media/'  
+  DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+```
+
+## Neon Database Setup
+
+A new database instance can be created on Neon for your project.
+Sign up for a Neon account and create a new project.
+Choose a name for your database and select the free tier option.
+Select the region closest to you for optimal performance.
+From your project dashboard, locate and copy the connection string, which typically starts with 'postgres://...'.
+Add this connection string as the value for DATABASE_URL in your env.py file.
+Include the same DATABASE_URL in your Heroku Config Vars for deployment.
+Remember to update your Django settings to use this new database configuration.
+
+## Heroku deployment
+
+To start the deployment process , please follow the below steps:
+
+1. Log in to [Heroku](https://id.heroku.com/login) or create an account if you are a new user.
+2. Once logged in, in the Heroku Dashboard, navigate to the '**New**' button in the top, right corner, and select '**Create New App**'.
+3. Enter an app name and choose your region. Click '**Create App**'. 
+4. In the Deploy tab, click on the '**Settings**', reach the '**Config Vars**' section and click on '**Reveal Config Vars**'. Here you will enter KEY:VALUE pairs for the app to run successfully. The KEY:VALUE pairs that you will need are your: 
+   
+   - **CLOUDINARY_URL**: **cloudinary://....** 
+   - **DATABASE_URL**:**postgres://...** 
+   - **DISABLE_COLLECTSTATIC** of value '1' (N.B Remove this Config Var before deployment),
+   -  **PORT**:**8000**
+   -  **SECRET_KEY** and value  
+  
+5. Add the Heroku host name into **ALLOWED_HOSTS** in your projects **settings.py file** -> ``` ['800-nielmc-django-project-lxqprmm3qz.us2.codeanyapp.com', '.herokuapp.com', 'localhost', '127.0.0.1'].```
+6. Once you are sure that you have set up the required files including your requirements.txt and Procfile, you have ensured that **DEBUG=False**, save your project, add the files, commit for initial deployment and push the data to GitHub.
+7. Go to the '**Deploy**' tab and choose GitHub as the Deployment method.
+8. Search for the repository name, select the branch that you would like to build from, and connect it via the '**Connect**' button.
+9.  Choose from '**Automatic**' or '**Manual**' deployment options, I chose the 'Manual' deployment method. Click '**Deploy Branch**'.
+10. Once the waiting period for the app to build has finished, click the '**View**' link to bring you to your newly deployed site. If you receive any errors, Heroku will display a reason in the app build log for you to investigate. **DISABLE_COLLECTSTATIC**  may be removed from the Config Vars once you have saved and pushed an image within your project, as can **PORT:8000**.
+
+## Clone project
+
+A local clone of this repository can be made on GitHub. Please follow the below steps:
+
+1. Navigate to GitHub and log in.
+2. The [Eventia Repository](https://github.com/Kaakyire9/Eventia) can be found at this location.
+3. Above the repository file section, locate the '**Code**' button.
+4. Click on this button and choose your clone method from HTTPS, SSH or GitHub CLI, copy the URL to your clipboard by clicking the '**Copy**' button.
+5. Open your Git Bash Terminal.
+6. Change the current working directory to the location you want the cloned directory to be made.
+7. Type `git clone` and paste in the copied URL from step 4.
+8. Press '**Enter**' for the local clone to be created.
+9. Using the ``pip3 install -r requirements.txt`` command, the dependencies and libraries needed for FreeFido will be installed.
+10. Set up your **env.py** file and from the above steps for Cloudinary and NeonSQL, gather the Cloudinary API key and the Neon SQL url for additon to your code.
+11. Ensure that your **env.py** file is placed in your **.gitignore** file and follow the remaining steps in the above Django Project Setup section before pushing your code to GitHub.
+
+## Fork Project
+
+A copy of the original repository can be made through GitHub. Please follow the below steps to fork this repository:  
+
+1. Navigate to GitHub and log in.  
+2. Once logged in, navigate to this repository using this link [Eventia Repository](https://github.com/Kaakyire9/Eventia).
+3. Above the repository file section and to the top, right of the page is the '**Fork**' button, click on this to make a fork of this repository.
+4. You should now have access to a forked copy of this repository in your Github account.
+5. Follow the above Django Project Steps if you wish to work on the project.
+
+# AI Implementation and Orchestration in Eventia Project
+
+## Use Cases and Reflections:
+
+### Code Creation:
+
+**Reflection**: AI tools facilitated rapid prototyping of Eventia's core features, such as event creation, user authentication, and RSVP functionality. Reverse prompts were utilized to generate alternative implementations for the Event model, ensuring it met all required fields (title, description, date, time, location, image, video, organizer, likes, type). Question-answer prompts helped resolve specific challenges in implementing the RSVP system, making it more intuitive for users with varying technical abilities.
+
+### Debugging:
+
+**Reflection**: AI interventions were crucial in resolving logic errors in the event management system, particularly in the authorization checks for event editing and deletion. Complex logic in the guest list management feature was simplified, making it more accessible to users with cognitive disabilities.
+
+### Performance and UX Optimization:
+
+**Reflection**: AI-driven improvements enhanced the application's speed, particularly in the event listing page with pagination. The user interface was optimized for responsiveness across devices, ensuring accessibility for users with visual impairments or motor difficulties.
+
+### Automated Unit Testing:
+
+**Reflection**: AI generated comprehensive test cases for core functionalities like event creation, RSVP submission, and user authentication. Prompts were used to create inclusive test scenarios, considering edge cases for users with different abilities, such as testing keyboard navigation for the event creation form.
+
+### Overall Impact:
+
+AI tools streamlined the development of Eventia's essential features, allowing focus on creating an inclusive and user-friendly event management platform. Efficiency gains were notable in faster debugging of the notification system and comprehensive testing of the **CRUD functionality** for events and RSVPs. The main challenge was adapting AI-generated code to fit Eventia's specific requirements, which was effectively resolved by using targeted prompts and manual adjustments, ultimately enhancing the platform's inclusivity and usability.
+
+# Testing Summary 
+
+## Manual Testing
+
+### Devices and Browsers Tested:
+
+- Desktop: Chrome, Firefox, Safari, Edge
+- Mobile: iOS (Safari), Android (Chrome)
+- Tablet: iPad (Safari), Android tablet (Chrome)
+- Screen reader: NVDA on Windows, VoiceOver on macOS
+- Keyboard-only navigation tested on all desktop browsers
+
+### Features Tested:
+- User registration and authentication
+- Event creation, editing, and deletion
+- RSVP submission and management
+- Navigation bar functionality
+- Responsive design across devices
+- Form validation and error handling
+- Accessibility of all interactive elements
+
+# Credits
+
+## Code
+
+The following blogs/tutorials complemented my learning for this project, alongside the [Code Institute's](https://codeinstitute.net/ie/) Learning Content.
+
+- [Django Docs](https://www.djangoproject.com/)
+- [Bootstrap Docs](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+- [Code Institute's](https://github.com/Code-Institute-Org>) Blog/Boutique Ado walkthroughs
+- [Django Docs](https://docs.djangoproject.com/en/dev/ref/contrib/admin/#django.contrib.admin.ModelAdmin.readonly_fields) to make model item readonly for search function showing deleted articles
+- [Django cleaned data how to](https://overiq.com/django-1-10/django-form-basics/?utm_content=cmp-true)
+
+### Additional reading/tutorials/books/blogs
+
+- [Python Crash Course](https://www.oreilly.com/library/view/python-crash-course/9781492071266/), Author: Eric Matthes, Publisher: No Starch Press, Year: 2019 Edition.
+- [Geeks for Geeks](https://www.geeksforgeeks.org/python-programming-language/?ref=ghm) for additional Python learning.
+
+## Acknowledgements
+
+- Many thanks to my lovely wife, my daughter and my son  for their continued support and prayers for making me go far with my studies. 
+- Thank you to my facilitator Dillon Mccaffery for his positive support, guidance and advice.
+- Huge thanks to my fellow students and friends, and Code Institute's Slack community for keeping positive the energy up.
