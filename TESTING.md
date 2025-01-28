@@ -14,16 +14,10 @@ Return back to the [README.md](README.md) file.
     - [Python Validation](#python-validation)
     - [CSS Validation](#css-validation)
     - [Lighthouse Scores](#lighthouse-scores)
-    - [Wave Accessibility Evaluation](#wave-accessibility-evaluation)
   - [Manual Testing](#manual-testing)
     - [User Input/Form Validation](#user-inputform-validation)
     - [Browser Compatibility](#browser-compatibility)
-    - [Testing User Stories](#testing-user-stories)
-    - [Dev Tools/Real World Device Testing](#dev-toolsreal-world-device-testing)
-  - [Bugs](#bugs)
-    - [Known Bugs](#known-bugs)
-
-
+ 
 ## Validation
 
 
