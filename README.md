@@ -59,8 +59,6 @@ For Admin access with relevant sign-in information: [Eventia Admin](https://even
 - [Testing](#testing)
 - [Credits](#credits)
   - [Code](#code)
-  - [Media](#media)
-    - [Additional reading/tutorials/books/blogs](#additional-readingtutorialsbooksblogs)
   - [Acknowledgements](#acknowledgements)
 
 ## Overview 
@@ -836,15 +834,7 @@ AI tools streamlined the development of Eventia's essential features, allowing f
 
 # Testing Summary 
 
-## Manual Testing
-
-### Devices and Browsers Tested:
-
-- Desktop: Chrome, Firefox, Safari, Edge
-- Mobile: iOS (Safari), Android (Chrome)
-- Tablet: iPad (Safari), Android tablet (Chrome)
-- Screen reader: NVDA on Windows, VoiceOver on macOS
-- Keyboard-only navigation tested on all desktop browsers
+- For all testing, please refer to the [TESTING.md](TESTING.md) file.
 
 ### Features Tested:
 - User registration and authentication
