@@ -1,15 +1,12 @@
-{% load static %}
-
-{% url 'account_login' as login_url %}
-{% url 'account_signup' as signup_url %}
-{% url 'account_logout' as logout_url %}
-{% url 'home' as home_url %}
-{% url 'about' as about_url %}
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    {% load static %}
+    {% url 'account_login' as login_url %}
+    {% url 'account_signup' as signup_url %}
+    {% url 'account_logout' as logout_url %}
+    {% url 'home' as home_url %}
+    {% url 'about' as about_url %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Eventia{% endblock %}</title>
@@ -33,64 +30,63 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-custom">
-        <div class="container">
-            <a class="navbar-brand" href="{% url 'home' %}">
-                <img src="{% static 'images/eventia_logo.png' %}" alt="Eventia Logo" class="img-fluid"
-                    style="height: 40px;">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'event_list' %}">Events</a>
-                    </li>
-                    {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'create_event' %}">Create Event</a>
-                    </li>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'about' %}">About Us</a>
-                    </li>
-
-                    {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'about' %}">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{%url 'contact' %}">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_signup' %}">Login/Register</a>
-                    </li>
-                    {% endif %}
-                </ul>
-                {% if user.is_authenticated %}
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="profileDropdown"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Profile
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="profileDropdown">
-                        <li><a class="dropdown-item" href="{% url 'profile'%}">View Profile</a></li>
-                        <li><a class="dropdown-item" href="{% url 'settings'%}">Settings</a></li>
-                        <li><a class="dropdown-item" href="{%url 'contact' %}">Contact</a></li>
-                        <li><a class="dropdown-item" href="{% url 'account_logout'%}">Logout</a></li>
+    <header>
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-custom">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'home' %}">
+                    <img src="{% static 'images/eventia_logo.png' %}" alt="Eventia Logo" class="img-fluid"
+                        style="height: 40px;">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'home' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'event_list' %}">Events</a>
+                        </li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'create_event' %}">Create Event</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'about' %}">About Us</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'about' %}">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'account_signup' %}">Login/Register</a>
+                        </li>
+                        {% endif %}
                     </ul>
+                    {% if user.is_authenticated %}
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="profileDropdown"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Profile
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                            <li><a class="dropdown-item" href="{% url 'profile'%}">View Profile</a></li>
+                            <li><a class="dropdown-item" href="{% url 'settings'%}">Settings</a></li>
+                            <li><a class="dropdown-item" href="{% url 'contact' %}">Contact</a></li>
+                            <li><a class="dropdown-item" href="{% url 'account_logout'%}">Logout</a></li>
+                        </ul>
+                    </div>
+                    {% endif %}
                 </div>
-                {% endif %}
             </div>
-        </div>
-    </nav>
-
+        </nav>
+    </header>
     <!-- Main Content -->
     <main class="flex-shrink-0 pb-4">
         <div class="container-fluid">
