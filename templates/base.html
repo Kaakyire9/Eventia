@@ -54,16 +54,16 @@
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'create_event'%}">Create Event</a>
+                        <a class="nav-link" href="{% url 'create_event' %}">Create Event</a>
                     </li>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'about'%}">About Us</a>
+                        <a class="nav-link" href="{% url 'about' %}">About Us</a>
                     </li>
 
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'about'%}">About Us</a>
+                        <a class="nav-link" href="{% url 'about' %}">About Us</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{%url 'contact' %}">Contact</a>

@@ -46,7 +46,6 @@ For Admin access with relevant sign-in information: [Eventia Admin](https://even
 - [Technologies \& Languages Used](#technologies--languages-used)
   - [Libraries \& Frameworks](#libraries--frameworks)
   - [Tools \& Programs](#tools--programs)
-- [Testing](#testing)
 - [Deployment](#deployment)
   - [Connecting to GitHub](#connecting-to-github)
   - [Django Project Setup](#django-project-setup)
@@ -55,6 +54,9 @@ For Admin access with relevant sign-in information: [Eventia Admin](https://even
   - [Heroku deployment](#heroku-deployment)
   - [Clone project](#clone-project)
   - [Fork Project](#fork-project)
+- [AI Implementation and Orchestration](#ai-implementation-and-orchestration-in-eventia-project)
+  - [Use Cases and Reflections](#Use-Cases-and-Reflections)
+- [Testing](#testing)
 - [Credits](#credits)
   - [Code](#code)
   - [Media](#media)
@@ -477,6 +479,34 @@ At the bottom of the footer, Eventia displays its copyright notice. This include
 
 ### Wireframes
 
+The wireframes for Eventia were created using Balsamiq Wireframes, providing a clear visual representation of the project's design concept from the outset. Balsamiq Wireframes is a user-friendly and efficient tool for creating web and software mockups, offering great flexibility in testing design ideas across various device frame sizes. The wireframes were designed with a modular structure, anticipating the use of a grid system that would facilitate responsive design across different devices and screen sizes. This approach ensured that key features like event creation, listing, and RSVP functionality were thoughtfully laid out, promoting a seamless user experience on desktop, tablet, and mobile platforms.
+
+**Mobile/Tablet view for:**  
+
+- Home
+- Events
+- Create Event 
+
+<details open>
+    <summary>Desktop/Tablet and Mobile Home Page Wireframe</summary>  
+    <img src="documentation/wireframes/eventia_wireframes.png">  
+</details>
+
+The Balsamiq wireframes for Eventia's homepage were meticulously designed to create an intuitive and user-friendly interface. By focusing on key elements such as the hero section, featured events, and clear navigation, the wireframes laid the groundwork for an engaging event discovery platform. The modular design ensures seamless responsiveness across desktop, tablet, and mobile devices, prioritizing user experience and accessibility in every interaction.
+
+<details open>
+    <summary>Desktop/Tablet and Mobile Event Listing Wireframe</summary>  
+    <img src="documentation/wireframes/eventia_wireframes_events.png">  
+</details>
+
+The Events listing page wireframes in Balsamiq capture the essential user experience for event discovery. Designed with a clean, intuitive layout, the wireframes prioritize clear event information display, including title, date, time, and venue. The paginated design ensures users can easily browse upcoming events, with a focus on responsive navigation and accessibility across different devices. The wireframe emphasizes simplicity and user-centric design, allowing attendees to quickly scan and select events of interest.
+
+<details open>
+    <summary>Desktop/Tablet and Mobile Create Event Wireframe</summary>  
+    <img src="documentation/wireframes/eventia_wireframes_CE.png">  
+</details>
+
+The Create Event page wireframes in Balsamiq capture the essential user journey for event creation. Designed with a clean, intuitive layout, the wireframes prioritize a comprehensive form that allows organizers to input all necessary event details. The wireframe emphasizes user-friendly design, ensuring that fields for title, description, date, time, location, and media uploads are clearly presented and logically arranged. The layout focuses on simplicity and accessibility, enabling users to easily create and share their events with minimal friction.
 
 ### Database Schema - Entity Relationship Diagram for Eventia 
 
